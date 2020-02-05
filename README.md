@@ -1,2 +1,2 @@
-# Login-i-posty
-Pro registraciju i dobavlienija postov s obnovlianijem
+# Login-and-posts
+About acount registration and posts, and update post
