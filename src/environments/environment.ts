@@ -3,11 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 import {Environment} from './interface';
-
+AIzaSyBeVNY1dO6dHpkj5e7EOZU2ctA4O-chAvQ
 export const environment: Environment = {
   production: false,
-  apiKey: 'AIzaSyBeVNY1dO6dHpkj5e7EOZU2ctA4O-chAvQ',
-  fbDbUrl: 'https://angular-blog-e513b.firebaseio.com'
+  apiKey: 'AIzaSyAgSuxq0cjJCy6Ed4PNFFX1dTE8dTTjlFs"',
+  fbDbUrl: 'https://angular-blog-15828.firebaseio.com'
 };
 
 /*
