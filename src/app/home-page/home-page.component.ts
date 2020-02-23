@@ -13,7 +13,7 @@ export class HomePageComponent implements OnInit {
 
   posts$: Subscription;
   posts: Post[] = [];
-  nopost: string = "Loading posts"
+  noPostMessage: string = "Loading posts"
 
 
   constructor(private postsService: PostsService) {
@@ -26,7 +26,7 @@ export class HomePageComponent implements OnInit {
     .subscribe(posts => {
       setTimeout(function () {
         if (posts === null) {
-          target.nopost = "No post created"
+          target.noPostMessage = "No post created"
         } else {
           target.posts = posts;
         }

@@ -10,7 +10,7 @@ import { AlertService } from '../shared/services/alert.service';
   styleUrls: ['./dashboard-page.component.scss']
 })
 export class DashboardPageComponent implements OnInit, OnDestroy {
-  nopost: string = "Loading posts";
+  noPostMessage: string = "Loading posts";
   posts$: Subscription;
   dSub: Subscription;
   posts: Post[] = [];
@@ -29,14 +29,12 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
 
         setTimeout(function () {
           if (posts === null) {
-            target.nopost = "No post created"
+            target.noPostMessage = "No post created"
           } else {
             target.posts = posts;
-          
           }
           console.log('hide');
         }, 2000);
-
       })
   }
 
@@ -45,7 +43,7 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
       this.posts = this.posts.filter(post => post.id !== id)
       this.alert.warning('Пост был удален')
       if (this.posts.length === 0) {
-        this.nopost = "No post created"
+        this.noPostMessage = "No post created"
       } 
     
     })
