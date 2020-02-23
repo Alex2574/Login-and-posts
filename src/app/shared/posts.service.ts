@@ -1,13 +1,13 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {FbCreateResponse, Post} from './interfaces';
-import {environment} from '../../environments/environment';
-import {map} from 'rxjs/operators';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { FbCreateResponse, Post } from './interfaces';
+import { environment } from '../../environments/environment';
+import { map } from 'rxjs/operators';
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class PostsService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   create(post: Post): Observable<Post> {
     return this.http.post(`${environment.fbDbUrl}/posts.json`, post)
@@ -22,14 +22,15 @@ export class PostsService {
 
   getAll(): Observable<Post[]> {
     return this.http.get(`${environment.fbDbUrl}/posts.json`)
-      .pipe(map((response: {[key: string]: any}) => {
-        return Object
-          .keys(response)
-          .map(key => ({
-            ...response[key],
-            id: key,
-            date: new Date(response[key].date)
-          }))
+      .pipe(map((response: { [key: string]: any }) => {
+        return response ?
+          Object
+            .keys(response)
+            .map(key => ({
+              ...response[key],
+              id: key,
+              date: new Date(response[key].date)
+            })) : null;
       }))
   }
 
