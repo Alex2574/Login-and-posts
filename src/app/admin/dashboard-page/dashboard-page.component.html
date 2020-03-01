@@ -1,6 +1,6 @@
 <div *ngIf="posts.length; else loading">
   <div class="form-control">
-    <input type="text" placeholder="Найти пост..." [(ngModel)]="searchStr">
+    <input type="text" placeholder="{{'Find post' | translate}}" [(ngModel)]="searchStr">
   </div>
   <table>
     <thead>

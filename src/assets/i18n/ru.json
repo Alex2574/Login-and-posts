@@ -9,5 +9,25 @@
 "Open" : "Открыть",
 "Delete": "Удалить",
 "Exit": "Выйти",
-"Create": "Создать"
+"Create": "Создать",
+"Create new post": "Создание нового поста",
+"Post name": "Название поста:",
+"Write post name": "Введите название поста",
+"Post info": "Контент поста:",
+"Write Author": "Введите автора поста",
+"Create post": "Создать пост",
+"Goto Home Page": "На главную",
+"Find post": "Найти пост...",
+"Update": "Обновить",
+"Write email": "Введите поле email",
+"Must be email": "Поле email должно быть email",
+"Write password": "Введите пароль",
+"Password must be": "Пароль должен быть не менее",
+"symbols Now ": "символов. Сейчас он",
+"symbols": "символа",
+"Login": "Войти",
+"Administrator login": "Войти в панель администратора"
+
+
+
 }

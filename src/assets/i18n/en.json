@@ -9,5 +9,23 @@
 "Open" : "Open",
 "Delete": "Delete",
 "Exit": "Exit",
-"Create": "Create"
+"Create": "Create",
+"Create new post": "Create new post",
+"Post name": "Post name:",
+"Write post name": "Write post name",
+"Post info": "Post info:",
+"Write Author": "Write Author",
+"Create post": "Create post",
+"Goto Home Page": "Goto Home Page",
+"Find post": "Find post",
+"Update": "Update",
+"Write email": "Write email",
+"Must be email": "Must be email",
+"Write password": "Write password",
+"Password must be": "Password must be",
+"symbols Now ": "symbols. Now",
+"symbols": "symbols",
+"Login": "Login",
+"Administrator login": "Administrator Login"
+
 }

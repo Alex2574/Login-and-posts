@@ -4,7 +4,7 @@
       class="form-control"
       [ngClass]="{invalid: form.get('title').touched && form.get('title').invalid}"
     >
-      <label for="title">Название поста:</label>
+      <label for="title">{{'Post name' | translate}}</label>
       <input id="title" type="text" formControlName="title">
       <div
         *ngIf="form.get('title').touched && form.get('title').invalid"
@@ -24,7 +24,7 @@
       class="btn btn-primary"
       type="submit"
       [disabled]="form.invalid || submitted"
-    >Обновить</button>
+    >{{'Update' | translate}}</button>
   </form>
 </div>
 
