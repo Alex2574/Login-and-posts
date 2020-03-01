@@ -1,5 +1,11 @@
 <nav class="navbar main">
-  <h1>Angular Blog</h1>
+  <h1>{{'Home   ' | translate}}</h1>
+
+  <div class="buttonalign">
+     <select #langSelect (change)="changeLang(langSelect.value)">
+      <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">{{ lang }}</option>  
+  </select>  
+</div> 
 </nav>
 
 <div class="container">

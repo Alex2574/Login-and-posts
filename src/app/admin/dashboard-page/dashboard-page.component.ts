@@ -3,6 +3,7 @@ import { PostsService } from '../../shared/posts.service';
 import { Post } from '../../shared/interfaces';
 import { Subscription } from 'rxjs';
 import { AlertService } from '../shared/services/alert.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-dashboard-page',
@@ -16,11 +17,20 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
   posts: Post[] = [];
   searchStr = '';
 
-  constructor(
+
+  constructor(  
     private postsService: PostsService,
-    private alert: AlertService
-  ) {     
-  }
+    private alert: AlertService,
+    public translate: TranslateService) {  
+    translate.addLangs(['en', 'ru']);  
+    if (localStorage.getItem('locale')) {  
+      const browserLang = localStorage.getItem('locale');  
+      translate.use(browserLang.match(/en|ru/) ? browserLang : 'en');  
+    } else {  
+      localStorage.setItem('locale', 'en');  
+      translate.setDefaultLang('en');  
+    }  
+  }  
 
   ngOnInit() {
     const target = this;

@@ -3,6 +3,7 @@ import { PostsService } from '../shared/posts.service';
 import { Observable, Subscription } from 'rxjs';
 import { Post } from '../shared/interfaces';
 import { typeWithParameters } from '@angular/compiler/src/render3/util';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-home-page',
