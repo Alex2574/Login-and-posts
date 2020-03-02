@@ -13,9 +13,8 @@ const routes: Routes = [
       {path: 'post/:id', component: PostPageComponent}
     ]
   },
-  {
-    path: 'admin', loadChildren: './admin/admin.module#AdminModule'
-  }
+  {path: 'admin', loadChildren: './admin/admin.module#AdminModule'},
+  {path: '**',redirectTo:'/'}  
 ];
 
 @NgModule({
