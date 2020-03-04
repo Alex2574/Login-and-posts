@@ -1,5 +1,5 @@
 <form class="card" [formGroup]="form" (ngSubmit)="submit()">
-  <h2>Войти в панель администратора</h2>
+  <h2>{{'Administrator login' | translate}}</h2>
 
 
   <div class="alert alert-danger" *ngIf="auth.error$ | async as error">
@@ -21,10 +21,10 @@
       class="validation"
     >
       <small *ngIf="form.get('email').errors.required">
-        Введите поле email
+       {{'Write email' | translate}}
       </small>
       <small *ngIf="form.get('email').errors.email">
-        Поле email должно быть email
+        {{'Must be email' | translate}}
       </small>
     </div>
   </div>
@@ -40,14 +40,14 @@
       *ngIf="form.get('password').touched && form.get('password').invalid"
     >
       <small *ngIf="form.get('password').errors.required">
-        Введите пароль
+        {{'Write password' | translate}}
       </small>
       <small *ngIf="form.get('password').errors.minlength">
-        Пароль должен быть не менее
+        {{'Password must be' | translate}}
         {{form.get('password').errors.minlength.requiredLength}}
-        символов. Сейчас он
+        {{'symbols Now' | translate}}
         {{form.get('password').errors.minlength.actualLength}}
-        символа.
+        {{'symbols' | translate }}.
       </small>
     </div>
   </div>
@@ -56,5 +56,6 @@
     type="submit"
     class="btn btn-primary"
     [disabled]="form.invalid || submitted"
-  >Войти</button>
+  >{{'Login' | translate}}</button>
 </form>
+

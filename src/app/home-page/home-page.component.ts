@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PostsService } from '../shared/posts.service';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { Post } from '../shared/interfaces';
-import { typeWithParameters } from '@angular/compiler/src/render3/util';
+
 
 @Component({
   selector: 'app-home-page',
@@ -24,15 +24,12 @@ export class HomePageComponent implements OnInit {
     this.posts$ = this.postsService.getAll()
     //Repaired error - when posts not created,and returned null.Now show, what no post are created
     .subscribe(posts => {
-      setTimeout(function () {
         if (posts === null) {
           target.noPostMessage = "No post created"
         } else {
           target.posts = posts;
         }
         console.log('hide');
-      }, 2000);
-
     })
 
 

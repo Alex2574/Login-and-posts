@@ -6,14 +6,19 @@
   </h1>
 
   <ul *ngIf="auth.isAuthenticated()">
-    <li routerLinkActive="active">
-      <a [routerLink]="['/admin', 'dashboard']">Главная</a>
+    <li>
+      <select #langSelect (change)="changeLang(langSelect.value)">  
+        <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">{{ lang }}</option>  
+    </select>  
     </li>
     <li routerLinkActive="active">
-      <a [routerLink]="['/admin', 'create']">Создать</a>
+      <a [routerLink]="['/admin', 'dashboard']">{{'Home' | translate}}</a>
+    </li>
+    <li routerLinkActive="active">
+      <a [routerLink]="['/admin', 'create']">{{'Create' | translate}}</a>
     </li>
     <li>
-      <a href="#" (click)="logout($event)">Выйти</a>
+      <a href="#" (click)="logout($event)">{{'Exit' | translate}}</a>
     </li>
   </ul>
 </nav>

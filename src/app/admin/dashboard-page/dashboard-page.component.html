@@ -1,15 +1,15 @@
 <div *ngIf="posts.length; else loading">
   <div class="form-control">
-    <input type="text" placeholder="Найти пост..." [(ngModel)]="searchStr">
+    <input type="text" placeholder="{{'Find post' | translate}}" [(ngModel)]="searchStr">
   </div>
   <table>
     <thead>
     <tr>
       <th>#</th>
-      <th>Автор</th>
-      <th>Название</th>
-      <th>Дата</th>
-      <th>Действие</th>
+      <th>{{'Author' | translate}}</th>
+      <th>{{'Title' | translate}}</th>
+      <th>{{'Date' | translate}}</th>
+      <th>{{'Action' | translate}}</th>
     </tr>
     </thead>
     <tbody>
@@ -23,9 +23,9 @@
           class="btn btn-link open"
           [routerLink]="['/admin', 'post', post.id, 'edit']"
         >
-          Открыть
-        </button>
-        <a (click)="remove(post.id)">Удалить</a>
+          {{'Open' | translate}}
+                </button>
+        <a (click)="remove(post.id)">{{'Delete' | translate}}</a>
       </td>
     </tr>
     </tbody>
