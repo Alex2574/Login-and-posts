@@ -1,5 +1,5 @@
 <div *ngIf="posts.length; else loading">
-  <div class="form-control">
+  <div class="custom-form-control">
     <input type="text" placeholder="{{'Find post' | translate}}" [(ngModel)]="searchStr">
   </div>
   <table>
@@ -25,12 +25,29 @@
         >
           {{'Open' | translate}}
                 </button>
-        <a (click)="remove(post.id)">{{'Delete' | translate}}</a>
+        <a (click)="open(post,modalRef)">{{'Delete' | translate}}</a>
       </td>
     </tr>
     </tbody>
   </table>
 </div>
+
+<ng-template #modalRef let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">{{'Poupup' | translate }}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+  {{titlePost}}
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="remove(postid)">Yes</button>
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">No</button>
+  </div>
+</ng-template>
+
 <ng-template #loading>
   <p class="text-center">{{noPostMessage}}</p>
 </ng-template>
