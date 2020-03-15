@@ -48,14 +48,11 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
     const target = this;
     this.posts$ = this.postsService.getAll()
       .subscribe(posts => {
-        {
           if (posts === null) {
             target.noPostMessage = "No post created"
           } else {
             target.posts = posts;
           }
-        
-        };
       })
   }
 
