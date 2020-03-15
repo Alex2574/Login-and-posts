@@ -13,6 +13,7 @@ import {AuthGuard} from './shared/services/auth.guard';
 import {SearchPipe} from './shared/search.pipe';
 import { AlertComponent } from './shared/components/alert/alert.component';
 import {AlertService} from './shared/services/alert.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import {AlertService} from './shared/services/alert.service';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+     NgbModule,
     SharedModule,
     RouterModule.forChild([
       {
