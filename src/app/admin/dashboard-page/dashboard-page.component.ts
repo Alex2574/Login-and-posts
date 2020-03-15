@@ -17,8 +17,7 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
   dSub: Subscription;
   posts: Post[] = [];
   searchStr = '';
-titlePost : string;  
-  // title = 'ng-bootstrap-modal-demo';
+  titlePost : string;  
   closeResult: string;
   modalOptions:NgbModalOptions;
   postid: string;
@@ -45,20 +44,18 @@ titlePost : string;
       translate.setDefaultLang('en');  
     }  
   }  
-
   ngOnInit() {
     const target = this;
     this.posts$ = this.postsService.getAll()
       .subscribe(posts => {
-console.log(posts)
-        setTimeout(function () {
+        {
           if (posts === null) {
             target.noPostMessage = "No post created"
           } else {
             target.posts = posts;
           }
-          // console.log('hide');
-        }, );
+        
+        };
       })
   }
 

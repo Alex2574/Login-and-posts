@@ -25,16 +25,16 @@
         >
           {{'Open' | translate}}
                 </button>
-        <a (click)="open(post,mymodal)">{{'Delete' | translate}}</a>
+        <a (click)="open(post,myMymodal)">{{'Delete' | translate}}</a>
       </td>
     </tr>
     </tbody>
   </table>
 </div>
 
-<ng-template #mymodal let-modal>
+<ng-template #myMymodal let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Are you sure you want to delete ?</h4>
+    <h4 class="modal-title" id="modal-basic-title">{{'Poupup' | translate }}</h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
