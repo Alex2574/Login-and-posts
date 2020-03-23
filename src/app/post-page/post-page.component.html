@@ -20,7 +20,12 @@
 <div>Comment  {{commentInfo.author}}</div>
 <div>{{commentInfo.email}}</div>
 <div>{{commentInfo.message}}</div>
-<app-comments (messageToEmit)="getMessage($event)"></app-comments>
+<app-comments (messageToEmit)="getMessage($event)" ></app-comments>
+
+<div *ngFor="let commentBlock of commentInfo">
+<div><b>Author:</b>  {{commentBlock.author}}</div>
+<div><u><b>The comment</b></u>  <br> {{commentBlock.message}} </div>
+</div>
 
 
 

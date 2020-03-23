@@ -1,9 +1,10 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
 import {PostsService} from '../shared/posts.service';
-import {Observable, from} from 'rxjs';
-import {Post} from '../shared/interfaces';
+import {Observable} from 'rxjs';
+import {Post, commentBlock} from '../shared/interfaces';
 import {switchMap} from 'rxjs/operators';
+
 
 
 @Component({
@@ -14,7 +15,9 @@ import {switchMap} from 'rxjs/operators';
 
 export class PostPageComponent implements OnInit {
   post$: Observable<Post>;
-  commentInfo  = {};
+  // commentInfo  = {};
+  commentInfo: commentBlock[] = [];
+
 
   constructor(
     private route: ActivatedRoute,
@@ -23,13 +26,14 @@ export class PostPageComponent implements OnInit {
   }
 
   ngOnInit() {
+   
     this.post$ = this.route.params
       .pipe(switchMap((params: Params) => {
-        return this.postsService.getById(params['id'])
-      }))
+        return this.postsService.getById(params.id);
+      }));
   }
-  getMessage(msg: string){
-this.commentInfo = msg;
+  getMessage(msg: commentBlock) {
+this.commentInfo.push(msg);
 
   }
 
