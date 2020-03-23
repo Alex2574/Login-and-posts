@@ -17,6 +17,9 @@ import { environment } from '../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { FormsModule }   from '@angular/forms';
+import { ContactComponent } from './comments/comments';
+
 
 registerLocaleData(ruLocale, 'ru');
 
@@ -32,9 +35,13 @@ const INTERCEPTOR_PROVIDER: Provider = {
     MainLayoutComponent,
     HomePageComponent,
     PostPageComponent,
-    PostComponent
+    PostComponent,
+    ContactComponent
   ],
   imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     SharedModule,

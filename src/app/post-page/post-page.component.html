@@ -17,6 +17,13 @@
   </div>
 </div>
 
+<div>Comment  {{commentInfo.author}}</div>
+<div>{{commentInfo.email}}</div>
+<div>{{commentInfo.message}}</div>
+<app-comments (messageToEmit)="getMessage($event)"></app-comments>
+
+
+
 <ng-template #loading>
   <p class="text-center">Загружаю пост...</p>
 </ng-template>
