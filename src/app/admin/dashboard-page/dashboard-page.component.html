@@ -9,6 +9,7 @@
       <th>{{'Author' | translate}}</th>
       <th>{{'Title' | translate}}</th>
       <th>{{'Date' | translate}}</th>
+      <th>{{'Last update' | translate}}</th>
       <th>{{'Action' | translate}}</th>
     </tr>
     </thead>
@@ -18,6 +19,7 @@
       <td>{{ post.author }}</td>
       <td>{{ post.title }}</td>
       <td>{{ post.date | date:'medium':null:'ru' }}</td>
+    <td>{{post.updateTime| date: 'medium':null:'ru' }}</td>
       <td>
         <button
           class="btn btn-link open"
