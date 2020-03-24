@@ -56,12 +56,8 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
       }
     });
   }
-updatetime(){
-const date = new Date()
-date.getDate()
 
 
-}
   remove(id: string) {
     this.dSub = this.postsService.remove(this.postid).subscribe(() => {
       this.posts = this.posts.filter(post => post.id !== id);

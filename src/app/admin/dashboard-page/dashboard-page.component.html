@@ -19,7 +19,7 @@
       <td>{{ post.author }}</td>
       <td>{{ post.title }}</td>
       <td>{{ post.date | date:'medium':null:'ru' }}</td>
-    <td>{{updatetime}}</td>
+    <td>{{post.updateTime| date: 'medium':null:'ru' }}</td>
       <td>
         <button
           class="btn btn-link open"
