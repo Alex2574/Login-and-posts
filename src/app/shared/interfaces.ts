@@ -17,7 +17,7 @@ export interface Post {
   date: Date
 }
 
-export interface commentBlock {
+export interface CommentBlock {
   author: string;
   comment: any;
   date: Date;

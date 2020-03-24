@@ -27,6 +27,7 @@
 "symbols": "символа",
 "Login": "Войти",
 "Administrator login": "Войти в панель администратора",
-"Poupup": "Tocno stiriet ?",
-"Comment": "Komientarij"
+"Poupup": "Вы уверены, что хотите удалить?",
+"Comment": "Комментировать",
+"Loading posts": "Загружаю пост..."
 }

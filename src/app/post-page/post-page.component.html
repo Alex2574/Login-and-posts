@@ -3,12 +3,14 @@
     <div class="header">
       <h1>{{ post.title }}</h1>
 
-      <button routerLink="/" class="btn btn-link">{{'Goto Home Page' | translate }}</button>
+      <button routerLink="/" class="btn btn-link">
+        {{ "Goto Home Page" | translate }}
+      </button>
     </div>
 
     <div class="info">
       <strong>{{ post.author }}</strong>
-      <small>{{ post.date | date:'medium':null:'ru' }}</small>
+      <small>{{ post.date | date: "medium":null:"ru" }}</small>
     </div>
 
     <div>
@@ -17,18 +19,19 @@
   </div>
 </div>
 
-<div>Comment  {{commentInfo.author}}</div>
-<div>{{commentInfo.email}}</div>
-<div>{{commentInfo.message}}</div>
-<app-comments (messageToEmit)="getMessage($event)" ></app-comments>
+<div>Comment {{ commentsInfo.author }}</div>
+<div>{{ commentsInfo.email }}</div>
+<div>{{ commentsInfo.message }}</div>
+<app-comments (messageToEmit)="getMessage($event)"></app-comments>
 
-<div *ngFor="let commentBlock of commentInfo">
-<div><b>Author:</b>  {{commentBlock.author}}</div>
-<div><u><b>The comment</b></u>  <br> {{commentBlock.message}} </div>
+<div *ngFor="let CommentBlock of commentsInfo">
+  <div><b>Author:</b> {{ CommentBlock.author }}</div>
+  <div>
+    <u><b>The comment</b></u> <br />
+    {{ CommentBlock.message }}
+  </div>
 </div>
 
-
-
 <ng-template #loading>
-  <p class="text-center">Загружаю пост...</p>
+  <p class="text-center">{{ "Loading posts" | translate }}</p>
 </ng-template>
