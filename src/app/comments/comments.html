@@ -1,8 +1,7 @@
 <form (ngSubmit)="processForm()">
-
-    <div><input type="text" name="name" placeholder="Your Name" [(ngModel)]="name"></div>
-    <div><input type="email" name="email"  placeholder="Your Email" [(ngModel)]="email"> </div>
-    <div><textarea  name="message" placeholder="What's on your mind?" [(ngModel)]="message"></textarea>
-    </div> <button type="submit" class="button is-danger is-large">Submit</button>
+    <textarea  name="message" placeholder="What's on your mind?" [(ngModel)]="message"></textarea>
+    <input type="text" name="name" placeholder="Your Name" [(ngModel)]="name">
+    <input type="email" name="email"  placeholder="Your Email" [(ngModel)]="email">
+     <button type="submit" class="button is-danger is-large">Submit</button>
 </form>
 
