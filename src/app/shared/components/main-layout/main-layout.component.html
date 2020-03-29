@@ -1,13 +1,25 @@
-<nav class="navbar main">
- <h1>{{'Home' | translate}}</h1>
-
+<nav class="navbar bg-primary">
+  <h1>
+    {{ 'Home' | translate }}
+    <div>
+      <select #langSelect (change)="changeLang(langSelect.value)">
+        <option
+          *ngFor="let lang of translate.getLangs()"
+          [value]="lang"
+          [selected]="lang === translate.currentLang"
+          >{{ lang }}</option
+        >
+      </select>
+    </div>
+  </h1>
   <div class="button-align">
-     <select #langSelect (change)="changeLang(langSelect.value)">
-      <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">{{ lang }}</option>  
-  </select>  
-</div> 
+    <ul *ngIf="auth.isAuthenticated()">
+      <a href="#" (click)="logout($event)"
+        ><b>{{ 'Exit' | translate }}</b></a
+      >
+    </ul>
+  </div>
 </nav>
-
 <div class="container">
   <router-outlet></router-outlet>
 </div>

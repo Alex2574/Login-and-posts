@@ -4,13 +4,13 @@
       <h1>{{ post.title }}</h1>
 
       <button routerLink="/" class="btn btn-link">
-        {{ "Goto Home Page" | translate }}
+        <b> {{ 'Goto Home Page' | translate }}</b>
       </button>
     </div>
 
     <div class="info">
       <strong>{{ post.author }}</strong>
-      <small>{{ post.date | date: "medium":null:"ru" }}</small>
+      <small>{{ post.date | date: 'medium':null:'ru' }}</small>
     </div>
 
     <div>
@@ -19,13 +19,108 @@
   </div>
 </div>
 
-<div>Comment {{ commentsInfo.author }}</div>
+<button
+  class="btn btn-primary"
+  (click)="open(modalRef)"
+  *ngIf="!auth.isAuthenticated()"
+>
+  Login to comment
+</button>
+
+<ng-template #modalRef let-modal>
+  <div class="modal-header">
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form class="card" [formGroup]="form" (ngSubmit)="submit()">
+      <h2>User Login</h2>
+
+      <div class="alert alert-danger" *ngIf="auth.error$ | async as error">
+        {{ error }}
+      </div>
+
+      <div class="alert alert-info" *ngIf="message">
+        {{ message }}
+      </div>
+
+      <div
+        class="custom-form-control"
+        [ngClass]="{
+          invalid: form.get('email').touched && form.get('email').invalid
+        }"
+      >
+        <label for="email">Email:</label>
+        <input id="email" type="email" formControlName="email" />
+        <div
+          *ngIf="form.get('email').touched && form.get('email').invalid"
+          class="validation"
+        >
+          <small *ngIf="form.get('email').errors.required">
+            {{ 'Write email' | translate }}
+          </small>
+          <small *ngIf="form.get('email').errors.email">
+            {{ 'Must be email' | translate }}
+          </small>
+        </div>
+      </div>
+      <div
+        class="custom-form-control"
+        [ngClass]="{
+          invalid: form.get('password').touched && form.get('password').invalid
+        }"
+      >
+        <label for="password">Пароль:</label>
+        <input id="password" type="password" formControlName="password" />
+        <div
+          class="validation"
+          *ngIf="form.get('password').touched && form.get('password').invalid"
+        >
+          <small *ngIf="form.get('password').errors.required">
+            {{ 'Write password' | translate }}
+          </small>
+          <small *ngIf="form.get('password').errors.minlength">
+            {{ 'Password must be' | translate }}
+            {{ form.get('password').errors.minlength.requiredLength }}
+            {{ 'symbols Now' | translate }}
+            {{ form.get('password').errors.minlength.actualLength }}
+            {{ 'symbols' | translate }}.
+          </small>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="form.invalid || submitted"
+      >
+        {{ 'Login' | translate }}
+      </button>
+    </form>
+    <button
+      type="button"
+      class="btn btn-outline-dark"
+      (click)="modal.close('Save click')"
+    >
+      No
+    </button>
+  </div>
+</ng-template>
 <div>{{ commentsInfo.email }}</div>
 <div>{{ commentsInfo.message }}</div>
 <app-comments (messageToEmit)="getMessage($event)"></app-comments>
 
 <div *ngFor="let CommentBlock of commentsInfo">
-  <div><b>Author:</b> {{ CommentBlock.author }}</div>
+  <div><b>Author:</b> {{ CommentBlock.email }}</div>
   <div>
     <u><b>The comment</b></u> <br />
     {{ CommentBlock.message }}
@@ -33,5 +128,5 @@
 </div>
 
 <ng-template #loading>
-  <p class="text-center">{{ "Loading posts" | translate }}</p>
+  <p class="text-center">{{ 'Loading posts' | translate }}</p>
 </ng-template>
