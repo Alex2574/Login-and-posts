@@ -19,7 +19,6 @@ export class ContactComponent implements OnInit {
   ngOnInit() {}
 
   processForm() {
-    console.log(this.auth);
     const data = {
       author: this.name,
       email: localStorage.getItem('email'),

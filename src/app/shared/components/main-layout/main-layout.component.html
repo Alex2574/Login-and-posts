@@ -14,9 +14,8 @@
   </h1>
   <div class="button-align">
     <ul *ngIf="auth.isAuthenticated()">
-      <a href="#" (click)="logout($event)"
-        ><b>{{ 'Exit' | translate }}</b></a
-      >
+      <a (click)="logout($event)"><b>{{ 'Exit' | translate }}</b>
+      </a>
     </ul>
   </div>
 </nav>
