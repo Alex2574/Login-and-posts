@@ -1,5 +1,6 @@
 import { Component, OnInit, NgModule } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+
 import {
   FormControl,
   FormGroup,
@@ -12,13 +13,16 @@ import { Post, CommentBlock } from '../shared/interfaces';
 import { User } from 'src/app/shared/interfaces';
 import { AuthService } from 'src/app/admin/shared/services/auth.service';
 import { switchMap } from 'rxjs/operators';
-import { LoginPageComponent } from 'src/app/admin/login-page/login-page.component';
+// import {SearchPipe} from 'src/app/admin/shared/search.pipe';
+// import { LoginPageComponent } from 'src/app/admin/login-page/login-page.component';
+// import { Comment } from 'src/app/shared/interfaces';
 import { ReactiveFormsModule } from '@angular/forms';
 import {
   NgbModal,
   ModalDismissReasons,
   NgbModalOptions
 } from '@ng-bootstrap/ng-bootstrap';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-post-page',
@@ -33,7 +37,13 @@ export class PostPageComponent implements OnInit {
   submitted = false;
   message: string;
   posts$: Subscription;
+  searchStr = '';
   posts: Post[] = [];
+  msg: CommentBlock;
+  noComments: string;
+  // noComments: string = 'Loading comments';
+  // comments: Comment[] = [];
+  // comment$: Subscription;
   constructor(
     public auth: AuthService,
     private router: Router,
@@ -73,6 +83,15 @@ export class PostPageComponent implements OnInit {
         Validators.minLength(6)
       ])
     });
+    //////
+    // const target = this;
+    // this.comment$ = this.postsService.getAll().subscribe(comments => {
+    //   if (comments === null) {
+    //     target.noComments = 'No comments';
+    //   } else {
+    //     target.comments = comments;
+    //   }
+    // });
   }
 
   submit() {
@@ -100,8 +119,10 @@ export class PostPageComponent implements OnInit {
     );
   }
   getMessage(msg: CommentBlock) {
-    this.commentsInfo.push(msg);
-  }
+    if (msg !== undefined) {
+      this.commentsInfo.push(msg)
+    }
+}
 
   open(modalRef: any) {
     this.modalService.open(modalRef, this.modalOptions).result.then(

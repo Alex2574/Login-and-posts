@@ -18,7 +18,16 @@
     </div>
   </div>
 </div>
+<!-- //////////// -->
+  <div *ngFor="let CommentBlock of commentsInfo">
 
+    <div><b>Author:</b> {{ CommentBlock.email }}</div>
+    <div>
+      <u><b>The comment</b></u> <br />
+      {{ CommentBlock.message }}
+    </div>
+  </div>
+<!-- ////////// -->
 <button
   class="btn btn-primary"
   (click)="open(modalRef)"
@@ -119,13 +128,7 @@
 <div>{{ commentsInfo.message }}</div>
 <app-comments (messageToEmit)="getMessage($event)"></app-comments>
 
-<div *ngFor="let CommentBlock of commentsInfo">
-  <div><b>Author:</b> {{ CommentBlock.email }}</div>
-  <div>
-    <u><b>The comment</b></u> <br />
-    {{ CommentBlock.message }}
-  </div>
-</div>
+
 
 <ng-template #loading>
   <p class="text-center">{{ 'Loading posts' | translate }}</p>
