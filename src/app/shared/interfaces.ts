@@ -18,16 +18,19 @@ export interface Post {
   author: string;
   date: Date;
   updateTime?: Date;
-  comments: any;
+  comments: CommentBlock[];
+
 }
 
 export interface CommentBlock {
+  commentsInfo: string;
   author: string;
-  comment: any;
+  comments: string;
   date: Date;
   email: string;
-  msg: string;
+  msg: any;
   message: string;
+  post: string;
 }
 export interface Comment{
   author: string;

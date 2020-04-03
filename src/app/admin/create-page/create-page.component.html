@@ -1,39 +1,43 @@
 <form [formGroup]="form" (ngSubmit)="submit()">
-  <h1>{{'Create new post' | translate }}</h1>
+  <h1>{{ 'Create new post' | translate }}</h1>
 
   <div
     class="custom-form-control"
-    [ngClass]="{invalid: form.get('title').touched && form.get('title').invalid}"
+    [ngClass]="{
+      invalid: form.get('title').touched && form.get('title').invalid
+    }"
   >
-    <label for="title">{{'Post name' | translate}}</label>
-    <input id="title" type="text" formControlName="title">
+    <label for="title">{{ 'Post name' | translate }}</label>
+    <input id="title" type="text" formControlName="title" />
     <div
       *ngIf="form.get('title').touched && form.get('title').invalid"
       class="validation"
     >
       <small *ngIf="form.get('title').errors.required">
-       {{'Write post name' | translate}}
+        {{ 'Write post name' | translate }}
       </small>
     </div>
   </div>
 
   <div class="custom-form-control">
-    <label>{{'Post info' | translate}}</label>
+    <label>{{ 'Post info' | translate }}</label>
     <quill-editor formControlName="text"></quill-editor>
   </div>
 
   <div
     class="custom-form-control"
-    [ngClass]="{invalid: form.get('author').touched && form.get('author').invalid}"
+    [ngClass]="{
+      invalid: form.get('author').touched && form.get('author').invalid
+    }"
   >
-    <label for="author">{{'Author' | translate}}:</label>
-    <input id="author" type="text" formControlName="author">
+    <label for="author">{{ 'Author' | translate }}:</label>
+    <input id="author" type="text" formControlName="author" />
     <div
       *ngIf="form.get('author').touched && form.get('author').invalid"
       class="validation"
     >
       <small *ngIf="form.get('author').errors.required">
-        {{'Write Author' | translate}}
+        {{ 'Write Author' | translate }}
       </small>
     </div>
   </div>
@@ -42,5 +46,7 @@
     type="submit"
     class="btn btn-block btn-dark"
     [disabled]="form.invalid"
-  >{{'Create post' | translate}}</button>
+  >
+    {{ 'Create post' | translate }}
+  </button>
 </form>

@@ -1,33 +1,33 @@
-<div *ngIf="post$ | async as post; else loading">
-  <div class="post">
-    <div class="header">
-      <h1>{{ post.title }}</h1>
+<div *ngIf="post">
+  <div class="header">
+    <h1>{{ post.title }}</h1>
+  </div>
+  <div>
+    <button routerLink="/" class="btn btn-link">
+      <b> {{ 'Goto Home Page' | translate }}</b>
+    </button>
+  </div>
 
-      <button routerLink="/" class="btn btn-link">
-        <b> {{ 'Goto Home Page' | translate }}</b>
-      </button>
-    </div>
+  <div class="info">
+    <strong>{{ post.author }}</strong>
+  </div>
+  <div>
+    <small>{{ post.date | date: 'medium':null:'ru' }}</small>
+  </div>
 
-    <div class="info">
-      <strong>{{ post.author }}</strong>
-      <small>{{ post.date | date: 'medium':null:'ru' }}</small>
-    </div>
-
-    <div>
-      <quill-view-html [content]="post.text"></quill-view-html>
-    </div>
+  <div>
+    <quill-view-html [content]="post.text"></quill-view-html>
   </div>
 </div>
-<!-- //////////// -->
-  <div *ngFor="let CommentBlock of commentsInfo">
 
-    <div><b>Author:</b> {{ CommentBlock.email }}</div>
-    <div>
-      <u><b>The comment</b></u> <br />
-      {{ CommentBlock.message }}
-    </div>
+<div *ngFor="let CommentBlock of commentsInfo">
+  <div><b>Author:</b> {{ CommentBlock.email }}</div>
+  <div>
+    <u><b>The comment</b></u> <br />
+    {{ CommentBlock.message }}
   </div>
-<!-- ////////// -->
+</div>
+
 <button
   class="btn btn-primary"
   (click)="open(modalRef)"
@@ -124,11 +124,9 @@
     </button>
   </div>
 </ng-template>
-<div>{{ commentsInfo.email }}</div>
-<div>{{ commentsInfo.message }}</div>
+<!-- <div>{{ commentsInfo.email }}</div>
+<div>{{ commentsInfo.message }}</div> -->
 <app-comments (messageToEmit)="getMessage($event)"></app-comments>
-
-
 
 <ng-template #loading>
   <p class="text-center">{{ 'Loading posts' | translate }}</p>
