@@ -18,14 +18,25 @@ export interface Post {
   author: string;
   date: Date;
   updateTime?: Date;
+  comments: CommentBlock[];
+
 }
 
 export interface CommentBlock {
+  commentsInfo: string;
   author: string;
-  comment: any;
+  comments: string;
+  date: Date;
+  email: string;
+  msg: any;
+  message: string;
+  post: string;
+}
+export interface Comment{
+  author: string;
+  comments: any;
   date: Date;
 }
-
 export interface FbCreateResponse {
   name: string;
 }

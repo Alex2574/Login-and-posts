@@ -1,5 +1,4 @@
 import { OnInit, Component, EventEmitter, Output, Input } from '@angular/core';
-import { CommentBlock } from '../shared/interfaces';
 
 @Component({
   selector: 'app-comments',

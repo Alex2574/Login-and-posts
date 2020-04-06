@@ -1,5 +1,6 @@
 import { Component, OnInit, NgModule } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+
 import {
   FormControl,
   FormGroup,
@@ -7,12 +8,11 @@ import {
   FormsModule
 } from '@angular/forms';
 import { PostsService } from '../shared/posts.service';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { Post, CommentBlock } from '../shared/interfaces';
 import { User } from 'src/app/shared/interfaces';
 import { AuthService } from 'src/app/admin/shared/services/auth.service';
 import { switchMap } from 'rxjs/operators';
-import { LoginPageComponent } from 'src/app/admin/login-page/login-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import {
   NgbModal,
@@ -30,10 +30,15 @@ import {
 })
 export class PostPageComponent implements OnInit {
   form: FormGroup;
+  post: Post;
   submitted = false;
   message: string;
-  posts$: Subscription;
+  searchStr = '';
   posts: Post[] = [];
+  msg: CommentBlock;
+  comments: Post[];
+
+
   constructor(
     public auth: AuthService,
     private router: Router,
@@ -46,15 +51,22 @@ export class PostPageComponent implements OnInit {
       backdropClass: 'customBackdrop'
     };
 
-    this.post$ = this.route.params.pipe(
-      switchMap((params: Params) => {
-        return this.postsService.getById(params.id);
-      })
-    );
+    this.post$ = this.route.params
+      .pipe(
+        switchMap((params: Params) => {
+          return this.postsService.getById(params.id);
+        })
+      )
+      .subscribe(postData => {
+        if (postData) {
+          this.post = postData;
+          this.commentsInfo = this.post.comments;
+        }
+      });
   }
   closeResult: string;
   modalOptions: NgbModalOptions;
-  post$: Observable<Post>;
+  post$: Subscription;
   commentsInfo: CommentBlock[] = [];
 
   ngOnInit() {
@@ -100,7 +112,13 @@ export class PostPageComponent implements OnInit {
     );
   }
   getMessage(msg: CommentBlock) {
-    this.commentsInfo.push(msg);
+    if (msg !== undefined) {
+      this.commentsInfo.push(msg);
+      this.post.comments = this.commentsInfo;
+      this.postsService.update(this.post).subscribe(() => {
+        console.log('done');
+      });
+    }
   }
 
   open(modalRef: any) {
