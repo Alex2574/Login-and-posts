@@ -33,13 +33,11 @@ export class PostPageComponent implements OnInit {
   post: Post;
   submitted = false;
   message: string;
-  posts$: Subscription;
   searchStr = '';
   posts: Post[] = [];
   msg: CommentBlock;
-  noComments: string;
   comments: Post[];
-  comment$: Subscription;
+
 
   constructor(
     public auth: AuthService,

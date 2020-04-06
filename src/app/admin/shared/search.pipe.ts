@@ -4,9 +4,6 @@ import {Post, Comment} from '../../shared/interfaces';
 @Pipe({
   name: 'searchPosts'
 })
-// @Pipe({
-//   name: 'searchComments'
-// })
 
 
 export class SearchPipe implements PipeTransform {
@@ -21,18 +18,5 @@ export class SearchPipe implements PipeTransform {
   }
 
 }
-/////////////////////////////////////
-// export class SearchComments implements PipeTransform {
-//   transform(comments: Comment[], search = ''): Comment[] {
-//     if (!search.trim()) {
-//       return comments;
-//     }
-
-//     return comments.filter(post => {
-//       // return comments.toLowerCase().includes(search.toLowerCase())
-//     })
-//   }
-
-// }
 
 
