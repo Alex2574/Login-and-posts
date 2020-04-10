@@ -1,5 +1,16 @@
-.button-allign {
-  display: flex;
-  justify-content: right;
+.wrapper {
+ display: flex;
+  justify-content: space-between;
+  height: 3.5rem;
+  width: 5rem;
+  font-size: 1rem;
+padding: 0.5rem;
 }
-
+.exittext{
+  display: flex;
+  justify-content: space-between;
+  height: 3.5rem;
+  width: 5rem;
+  font-size: 1rem;
+padding: 0.5rem;
+}

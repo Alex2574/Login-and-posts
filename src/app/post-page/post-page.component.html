@@ -1,13 +1,13 @@
 <div *ngIf="post">
   <div class="header">
     <h1>{{ post.title }}</h1>
-  </div>
-  <div>
-    <button routerLink="/" class="btn btn-link">
+ 
+  <ul>
+    <li class ="wrapper"><button routerLink="/">
       <b> {{ 'Goto Home Page' | translate }}</b>
-    </button>
-  </div>
-
+    </button></li>
+  </ul>
+</div>
   <div class="info">
     <strong>{{ post.author }}</strong>
   </div>
