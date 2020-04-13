@@ -9,6 +9,7 @@
   --light-color: #f4f4f4;
   --danger-color: #dc3545;
   --success-color: #28a745;
+  --invalid-color:#dc3545;
 }
 
 * {
@@ -223,14 +224,14 @@ img {
   margin-bottom: .8rem;
 
   &.invalid {
-    color: var(--primary-color);
+    color: var(--invalid-color);
     input {
-      border-color: var(--primary-color);
+      border-color: var(--invalid-color);
     }
   }
 
   .validation {
-    color: var(--primary-color);
+    color:  var(--invalid-color);
   }
 }
 

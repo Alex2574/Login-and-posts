@@ -2,11 +2,11 @@
 
 <nav class="navbar bg-primary">
   <h1>
-    <a routerLink="/">Angular Admin</a>
+    <button routerLink="/" class="btn-postpage">Go to user Posts page</button>
   </h1>
 
-  <ul *ngIf="auth.isAuthenticated()">
-    <li>
+  <ul>
+    <li *ngIf="auth.isAuthenticated()">
       <select #langSelect (change)="changeLang(langSelect.value)">  
         <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">{{ lang }}</option>  
     </select>  
