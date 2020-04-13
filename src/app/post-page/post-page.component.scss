@@ -26,4 +26,12 @@
   margin-right: 10px;
 }
 
-
+.wrapper {
+  display: flex;
+   justify-content: space-between;
+   float: right;
+   height: 3.5rem;
+   width: 15rem;
+   font-size: 1rem;
+ padding: 0.5rem;
+ }

@@ -5,7 +5,7 @@ import {
   FormControl,
   FormGroup,
   Validators,
-  FormsModule
+  FormsModule,
 } from '@angular/forms';
 import { PostsService } from '../shared/posts.service';
 import { Subscription } from 'rxjs';
@@ -17,16 +17,16 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {
   NgbModal,
   ModalDismissReasons,
-  NgbModalOptions
+  NgbModalOptions,
 } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-post-page',
   templateUrl: './post-page.component.html',
-  styleUrls: ['./post-page.component.scss']
+  styleUrls: ['./post-page.component.scss'],
 })
 @NgModule({
-  imports: [ReactiveFormsModule, FormGroup, FormsModule, Validators]
+  imports: [ReactiveFormsModule, FormGroup, FormsModule, Validators],
 })
 export class PostPageComponent implements OnInit {
   form: FormGroup;
@@ -37,7 +37,10 @@ export class PostPageComponent implements OnInit {
   posts: Post[] = [];
   msg: CommentBlock;
   comments: Post[];
-
+  closeResult: string;
+  modalOptions: NgbModalOptions;
+  post$: Subscription;
+  commentsInfo: CommentBlock[] = [];
 
   constructor(
     public auth: AuthService,
@@ -48,7 +51,7 @@ export class PostPageComponent implements OnInit {
   ) {
     this.modalOptions = {
       backdrop: 'static',
-      backdropClass: 'customBackdrop'
+      backdropClass: 'customBackdrop',
     };
 
     this.post$ = this.route.params
@@ -57,17 +60,15 @@ export class PostPageComponent implements OnInit {
           return this.postsService.getById(params.id);
         })
       )
-      .subscribe(postData => {
+      .subscribe((postData) => {
         if (postData) {
           this.post = postData;
-          this.commentsInfo = this.post.comments;
+          if (this.post.comments !== undefined) {
+            this.commentsInfo = this.post.comments;
+          }
         }
       });
   }
-  closeResult: string;
-  modalOptions: NgbModalOptions;
-  post$: Subscription;
-  commentsInfo: CommentBlock[] = [];
 
   ngOnInit() {
     this.route.queryParams.subscribe((params: Params) => {
@@ -82,8 +83,8 @@ export class PostPageComponent implements OnInit {
       email: new FormControl(null, [Validators.required, Validators.email]),
       password: new FormControl(null, [
         Validators.required,
-        Validators.minLength(6)
-      ])
+        Validators.minLength(6),
+      ]),
     });
   }
 
@@ -96,7 +97,7 @@ export class PostPageComponent implements OnInit {
 
     const user: User = {
       email: this.form.value.email,
-      password: this.form.value.password
+      password: this.form.value.password,
     };
 
     this.auth.login(user).subscribe(
@@ -123,10 +124,10 @@ export class PostPageComponent implements OnInit {
 
   open(modalRef: any) {
     this.modalService.open(modalRef, this.modalOptions).result.then(
-      result => {
+      (result) => {
         this.closeResult = `Closed with: ${result}`;
       },
-      reason => {
+      (reason) => {
         this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
       }
     );
