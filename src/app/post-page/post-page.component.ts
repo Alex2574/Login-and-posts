@@ -60,7 +60,7 @@ export class PostPageComponent implements OnInit {
           return this.postsService.getById(params.id);
         })
       )
-      .subscribe((postData) => {t
+      .subscribe((postData) => {
         if (postData) {
           this.post = postData;
           if (this.post.comments !== undefined) {
