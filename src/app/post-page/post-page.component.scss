@@ -22,16 +22,48 @@
   }
 
 }
+
 .open {
   margin-right: 10px;
 }
 
 .wrapper {
-  display: flex;
-   justify-content: space-between;
-   float: right;
-   height: 3.5rem;
-   width: 15rem;
-   font-size: 1rem;
- padding: 0.5rem;
- }
+  float:right;
+  margin: 6px;
+  padding: 8px 18px;
+  border-radius: 30px;
+  font-size: 14px;
+  color: rgb(255, 255, 255);
+   background-color: rgb(38, 129, 233);
+  display: inline-block;
+  border: 1px solid rgba(0, 0, 0, 0.21);
+  border-bottom-color: rgba(0, 0, 0, 0.34);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+  box-shadow: 0 1px 0 rgba(9, 95, 165, 0.34) inset,
+    0 2px 0 -1px rgba(0, 0, 0, 0.13),
+    0 3px 0 -1px rgba(0, 0, 0, 0.08),
+    0 3px 13px -1px rgba(0, 0, 0, 0.21);
+}
+
+.btn-login {
+  padding: 8px 18px;
+  font-size: 14px;
+  margin: 6px;
+  color: white;
+  background-color: rgb(50, 23, 202);
+  display: inline-block;
+  border: 1px solid rgba(0, 0, 0, 0.21);
+  border-bottom-color: rgba(0, 0, 0, 0.34);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.34) inset,
+    0 2px 0 -1px rgba(0, 0, 0, 0.13),
+    0 3px 0 -1px rgba(0, 0, 0, 0.08),
+    0 3px 13px -1px rgba(0, 0, 0, 0.21);
+}
+
+.btn-login:active {
+  top: 7px;
+  border-color: rgba(0, 0, 0, 0.34) rgba(0, 0, 0, 0.21) rgba(0, 0, 0, 0.21);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.89), 0 1px rgba(0, 0, 0, 0.05) inset;
+  position: relative;
+}

@@ -225,12 +225,12 @@ img {
   &.invalid {
     color: var(--primary-color);
     input {
-      border-color: var(--primary-color);
+      border-color: rgb(202, 9, 9);
     }
   }
 
   .validation {
-    color: var(--primary-color);
+    color:  rgb(202, 9, 9);
   }
 }
 

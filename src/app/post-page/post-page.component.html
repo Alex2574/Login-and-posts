@@ -3,7 +3,7 @@
     <h1>{{ post.title }}</h1>
  
   <ul>
-    <li class ="wrapper"><button routerLink="/">
+    <li ><button routerLink="/" class ="wrapper">
       <b> {{ 'Goto Home Page' | translate }}</b>
     </button></li>
   </ul>
@@ -21,15 +21,13 @@
 </div>
 
 <div *ngFor="let CommentBlock of commentsInfo">
-  <div><b>Author:</b> {{ CommentBlock.email }}</div>
-  <div>
-    <u><b>The comment</b></u> <br />
-    {{ CommentBlock.message }}
+  <div><b>Author:</b> {{ CommentBlock.email }}
+  <br>{{ CommentBlock.message }}
   </div>
 </div>
 
 <button
-  class="btn btn-primary"
+  class="btn-login"
   (click)="open(modalRef)"
   *ngIf="!auth.isAuthenticated()"
 >
@@ -124,7 +122,7 @@
     </button>
   </div>
 </ng-template>
-<app-comments (messageToEmit)="getMessage($event)"></app-comments>
+<app-comments  (messageToEmit)="getMessage($event)"  *ngIf="auth.isAuthenticated()"></app-comments>
 
 <ng-template #loading>
   <p class="text-center">{{ 'Loading posts' | translate }}</p>

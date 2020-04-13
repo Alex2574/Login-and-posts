@@ -13,7 +13,10 @@ export class ContactComponent implements OnInit {
   @Output() messageToEmit = new EventEmitter<any>();
   @Input() auth = '';
 
-  constructor() {}
+  constructor(
+  ) {
+    
+  }
 
   ngOnInit() {}
 
