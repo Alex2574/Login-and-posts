@@ -1,6 +1,5 @@
 import { OnInit, Component, EventEmitter, Output, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { PostsService } from 'src/app/shared/posts.service';
 import { Messages } from 'src/app/shared/interfaces';
 
 @Component({
@@ -17,7 +16,7 @@ export class ContactComponent implements OnInit {
   @Output() messageToEmit = new EventEmitter<any>();
   @Input() auth = '';
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
     this.form = new FormGroup({
@@ -27,20 +26,18 @@ export class ContactComponent implements OnInit {
         Validators.maxLength(80),
       ]),
     });
-    this.form.get('message').valueChanges.subscribe((messageValue) => { });
   }
 
   processForm() {
+    if (this.form.invalid) {
+      return;
+    }
     const data = {
       author: this.name,
       email: localStorage.getItem('email'),
       message: this.message,
     };
     this.messageToEmit.emit(data);
-
-    if (this.form.invalid) {
-      return;
-    }
 
     const message: Messages = {
       message: this.form.value.message,
