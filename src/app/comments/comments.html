@@ -1,5 +1,39 @@
-<form  (ngSubmit)="processForm()">
-    <textarea  name="message" placeholder="What's on your mind?" [(ngModel)]="message" class="sizetext"></textarea>
-    <button type="submit" class="btn-subb">Submit</button>
-</form>
+<form [formGroup]="form" (ngSubmit)="processForm()">
+  <div
+    [ngClass]="{
+      invalid: form.get('message').touched && form.get('message').invalid
+    }"
+  >
+    <div
+      *ngIf="form.get('message').touched && form.get('message').invalid"
+      class="validation"
+    >
+      <small *ngIf="form.get('message').errors.required" class="error-light">
+        Write comment</small
+      >
 
+      <small *ngIf="form.get('message').errors.minlength" class="error-light">
+        Minimum comment lenght must be 2 symbols
+        <br />
+        Symbols now: {{form.get('message').errors.minlength.actualLength}}
+      </small>
+
+      <small *ngIf="form.get('message').errors.maxlength" class="error-light">
+        Maximum comment can be only 80 symbols.
+        <br />
+        Symbols now: {{form.get('message').errors.maxlength.actualLength}}
+      </small>
+    </div>
+  </div>
+
+  <textarea
+    formControlName="message"
+    placeholder="What's on your mind?"
+    [(ngModel)]="message"
+    class="sizetext"
+  ></textarea>
+
+  <button type="submit" class="btn-subb" [disabled]="form.invalid">
+    Submit
+  </button>
+</form>
