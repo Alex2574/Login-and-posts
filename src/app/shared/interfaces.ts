@@ -19,9 +19,10 @@ export interface Post {
   date: Date;
   updateTime?: Date;
   comments: CommentBlock[];
-
 }
-
+export interface Messages {
+  message: string;
+}
 export interface CommentBlock {
   commentsInfo: string;
   author: string;
@@ -32,7 +33,7 @@ export interface CommentBlock {
   message: string;
   post: string;
 }
-export interface Comment{
+export interface Comment {
   author: string;
   comments: any;
   date: Date;
