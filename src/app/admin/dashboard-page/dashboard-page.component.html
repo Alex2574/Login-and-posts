@@ -31,7 +31,9 @@
           >
             {{ 'Open' | translate }}
           </button>
-          <a (click)="open(post, modalRef)">{{ 'Delete' | translate }}</a>
+          <button class="btn btn-link delete" (click)="open(post, modalRef)">
+            {{ 'Delete' | translate }}
+          </button>
         </td>
       </tr>
     </tbody>
