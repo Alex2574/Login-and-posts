@@ -12,9 +12,11 @@ export class ContactComponent implements OnInit {
   email: string;
   form: FormGroup;
   message: Messages;
+  date: Date;
 
   @Output() messageToEmit = new EventEmitter<any>();
   @Input() auth = '';
+ 
 
   constructor() {}
 
@@ -36,6 +38,7 @@ export class ContactComponent implements OnInit {
       author: this.name,
       email: localStorage.getItem('email'),
       message: this.message,
+      date: new Date(),
     };
     this.messageToEmit.emit(data);
 
