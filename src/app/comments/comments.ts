@@ -12,7 +12,6 @@ export class ContactComponent implements OnInit {
   email: string;
   form: FormGroup;
   message: Messages;
-  date: Date;
 
   @Output() messageToEmit = new EventEmitter<any>();
   @Input() auth = '';

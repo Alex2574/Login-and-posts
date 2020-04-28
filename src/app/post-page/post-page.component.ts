@@ -41,7 +41,7 @@ export class PostPageComponent implements OnInit {
   modalOptions: NgbModalOptions;
   post$: Subscription;
   commentsInfo: CommentBlock[] = [];
-  date: Date;
+
 
   constructor(
     public auth: AuthService,
