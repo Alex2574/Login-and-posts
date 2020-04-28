@@ -42,6 +42,7 @@ export class PostPageComponent implements OnInit {
   post$: Subscription;
   commentsInfo: CommentBlock[] = [];
 
+
   constructor(
     public auth: AuthService,
     private router: Router,

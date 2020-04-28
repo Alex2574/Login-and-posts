@@ -23,7 +23,8 @@
 <div *ngFor="let CommentBlock of commentsInfo">
   <div><b>Author:</b> {{ CommentBlock.email }}
   <br>{{ CommentBlock.message }}
-  </div>
+  <br><small>{{ CommentBlock.date | date: 'short':null: 'ru' }}</small>
+</div>
 </div>
 
 <button
