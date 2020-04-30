@@ -41,8 +41,8 @@ export class PostPageComponent implements OnInit {
   modalOptions: NgbModalOptions;
   post$: Subscription;
   commentsInfo: CommentBlock[] = [];
-  ShowCommentCount: boolean;
-  ShowCommentLess: boolean;
+  showCommentCount: boolean;
+  showCommentLess: boolean;
   amount = 5;
   less = 6;
 
@@ -127,14 +127,14 @@ export class PostPageComponent implements OnInit {
   }
   btnShowCommentCount() {
     if (this.commentsInfo.length > 5) {
-      this.ShowCommentCount = !this.ShowCommentCount;
+      this.showCommentCount = !this.showCommentCount;
       this.amount = this.commentsInfo.length;
     }
   }
 
   btnShowCommentLess() {
     if (this.commentsInfo.length > 6) {
-      this.ShowCommentLess = !this.ShowCommentLess;
+      this.showCommentLess = !this.showCommentLess;
       this.amount = 5;
     }
   }
