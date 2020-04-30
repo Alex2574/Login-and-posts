@@ -41,8 +41,8 @@ export class PostPageComponent implements OnInit {
   modalOptions: NgbModalOptions;
   post$: Subscription;
   commentsInfo: CommentBlock[] = [];
-  showCommentCount: boolean;
-  showCommentLess: boolean;
+  private showCommentCount: boolean;
+  private showCommentLess: boolean;
   amount = 5;
   less = 6;
 
