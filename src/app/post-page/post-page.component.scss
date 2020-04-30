@@ -28,13 +28,13 @@
 }
 
 .wrapper {
-  float:right;
+  float: right;
   margin: 6px;
   padding: 8px 18px;
   border-radius: 30px;
   font-size: 14px;
   color: rgb(255, 255, 255);
-   background-color: rgb(38, 129, 233);
+  background-color: rgb(38, 129, 233);
   display: inline-block;
   border: 1px solid rgba(0, 0, 0, 0.21);
   border-bottom-color: rgba(0, 0, 0, 0.34);
@@ -48,6 +48,7 @@
 .btn-login {
   padding: 8px 18px;
   font-size: 14px;
+  border-radius: 30px;
   margin: 6px;
   color: white;
   background-color: rgb(50, 23, 202);
@@ -62,6 +63,54 @@
 }
 
 .btn-login:active {
+  top: 7px;
+  border-color: rgba(0, 0, 0, 0.34) rgba(0, 0, 0, 0.21) rgba(0, 0, 0, 0.21);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.89), 0 1px rgba(0, 0, 0, 0.05) inset;
+  position: relative;
+}
+
+.allComments {
+  padding: 8px 18px;
+  border-radius: 30px;
+  font-size: 14px;
+  margin: 6px;
+  color: white;
+  background-color: rgb(80, 128, 230);
+  display: inline-block;
+  border: 1px solid rgba(0, 0, 0, 0.21);
+  border-bottom-color: rgba(0, 0, 0, 0.34);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.34) inset,
+    0 2px 0 -1px rgba(0, 0, 0, 0.13),
+    0 3px 0 -1px rgba(0, 0, 0, 0.08),
+    0 3px 13px -1px rgba(0, 0, 0, 0.21);
+}
+
+.allComments:active {
+  top: 7px;
+  border-color: rgba(0, 0, 0, 0.34) rgba(0, 0, 0, 0.21) rgba(0, 0, 0, 0.21);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.89), 0 1px rgba(0, 0, 0, 0.05) inset;
+  position: relative;
+}
+
+.lessComments {
+  padding: 8px 18px;
+  border-radius: 30px;
+  font-size: 14px;
+  margin: 6px;
+  color: white;
+  background-color: rgb(255, 166, 2);
+  display: inline-block;
+  border: 1px solid rgba(0, 0, 0, 0.21);
+  border-bottom-color: rgba(0, 0, 0, 0.34);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.34) inset,
+    0 2px 0 -1px rgba(0, 0, 0, 0.13),
+    0 3px 0 -1px rgba(0, 0, 0, 0.08),
+    0 3px 13px -1px rgba(0, 0, 0, 0.21);
+}
+
+.lessComments:active {
   top: 7px;
   border-color: rgba(0, 0, 0, 0.34) rgba(0, 0, 0, 0.21) rgba(0, 0, 0, 0.21);
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.89), 0 1px rgba(0, 0, 0, 0.05) inset;
