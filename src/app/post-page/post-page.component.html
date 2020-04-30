@@ -1,13 +1,15 @@
 <div *ngIf="post">
   <div class="header">
     <h1>{{ post.title }}</h1>
- 
-  <ul>
-    <li ><button routerLink="/" class ="wrapper">
-      <b> {{ 'Goto Home Page' | translate }}</b>
-    </button></li>
-  </ul>
-</div>
+
+    <ul>
+      <li>
+        <button routerLink="/" class="wrapper">
+          <b> {{ 'Goto Home Page' | translate }}</b>
+        </button>
+      </li>
+    </ul>
+  </div>
   <div class="info">
     <strong>{{ post.author }}</strong>
   </div>
@@ -20,13 +22,26 @@
   </div>
 </div>
 
-<div *ngFor="let CommentBlock of commentsInfo">
-  <div><b>Author:</b> {{ CommentBlock.email }}
-  <br>{{ CommentBlock.message }}
-  <br><small>{{ CommentBlock.date | date: 'short':null: 'ru' }}</small>
-</div>
-</div>
-
+<ng-container *ngFor="let CommentBlock of commentsInfo | slice: 0:amount">
+  <div>
+    <b>Author:</b> {{ CommentBlock.email }} <br />{{ CommentBlock.message }}
+    <br /><small>{{ CommentBlock.date | date: 'short':null:'ru' }}</small>
+  </div>
+</ng-container>
+<button
+  *ngIf="commentsInfo.length > amount"
+  (click)="btnShowCommentCount()"
+  class="allComments"
+>
+  All comments
+</button>
+<button
+  *ngIf="amount > less"
+  (click)="btnShowCommentLess()"
+  class="lessComments"
+>
+  Less comments
+</button>
 <button
   class="btn-login"
   (click)="open(modalRef)"
@@ -123,7 +138,10 @@
     </button>
   </div>
 </ng-template>
-<app-comments  (messageToEmit)="getMessage($event)"  *ngIf="auth.isAuthenticated()"></app-comments>
+<app-comments
+  (messageToEmit)="getMessage($event)"
+  *ngIf="auth.isAuthenticated()"
+></app-comments>
 
 <ng-template #loading>
   <p class="text-center">{{ 'Loading posts' | translate }}</p>
