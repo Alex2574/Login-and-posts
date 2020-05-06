@@ -5,21 +5,22 @@
     <button routerLink="/" class="btn-postpage">Go to user Posts page</button>
   </h1>
 
-  <ul>
-    <li *ngIf="auth.isAuthenticated()">
+  <ul >
+    <li >
       <select #langSelect (change)="changeLang(langSelect.value)">  
         <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">{{ lang }}</option>  
     </select>  
     </li>
+    <ul *ngIf="auth.isAuthenticated()">
     <li routerLinkActive="active">
       <a [routerLink]="['/admin', 'dashboard']">{{'Home' | translate}}</a>
     </li>
-    <li *ngIf="auth.isAuthenticated()" routerLinkActive="active">
+    <li routerLinkActive="active">
       <a [routerLink]="['/admin', 'create']">{{'Create' | translate}}</a>
     </li>
-    <li *ngIf="auth.isAuthenticated()">
+    <li >
       <a href="#" (click)="logout($event)">{{'Exit' | translate}}</a>
-    </li>
+    </li></ul>
   </ul>
 </nav>
 
