@@ -45,7 +45,7 @@
 <button
   class="btn-login"
   (click)="open(modalRef)"
-  *ngIf="!auth.isAuthenticated()"
+  *ngIf="post && !auth.isAuthenticated()"
 >
   Login to comment
 </button>
