@@ -8,6 +8,12 @@
           <b> {{ 'Goto Home Page' | translate }}</b>
         </button>
       </li>
+      <li>
+        <button routerLink="/questionnaire" class="wrapper"
+        *ngIf="post && auth.isAuthenticated()">
+          <b> {{ 'Provide info' | translate }}</b>
+        </button>
+      </li>
     </ul>
   </div>
   <div class="info">

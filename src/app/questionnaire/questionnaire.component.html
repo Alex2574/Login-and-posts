@@ -1,0 +1,104 @@
+<title>General information</title>
+<div><b> {{'General information' | translate }}</b></div>
+
+<ul>
+  <li>
+    <button routerLink="/" class="homebutton">
+      <b> {{ 'Goto Home Page' | translate }}</b>
+    </button>
+  </li>
+</ul>
+<form [formGroup]="userForm" (ngSubmit)="onFormSubmit()">
+  <div>
+    1) {{'Gender' | translate }} <br />
+    <input type="radio" value="male" formControlName="gender" /> {{'Male' | translate }} <br />
+    <input type="radio" value="female" formControlName="gender" /> {{'Female' | translate }}
+  </div>
+  <div class="form-date">
+    <label>{{'Date of birth' | translate }}</label>
+    <div class="input-group">
+      <input
+        type="date"
+        class="form-control"
+        id="BirthDate"
+        name="BirthDate"
+        [ngModel]="BirthDate | date: 'mm-dd-yyyy'"
+        formControlName="BirthDate"
+      />
+    </div>
+  </div>
+  <br />
+  2) {{'Age group' | translate }}:
+  <div>
+    <input type="radio" value="youngAge" formControlName="ageGroup" /> 20-34
+    {{'years' | translate }} <br />
+    <input type="radio" value="middleAge" formControlName="ageGroup" /> 35-54
+    {{'years' | translate }} <br />
+    <input type="radio" value="olderAge" formControlName="ageGroup" /> 55-74
+    {{'years' | translate }} <br />
+    <input type="radio" value="oldestAge" formControlName="ageGroup" /> 75 {{'years' | translate }}
+    {{'or older' | translate }}<br />
+    <div
+      *ngIf="
+        userForm.get('ageGroup').invalid &&
+        isValidFormSubmitted != null &&
+        !isValidFormSubmitted
+      "
+      [ngClass]="'error'"
+    >
+      {{'Age group required' | translate }}.
+    </div>
+  </div>
+
+  <div>
+    <br />
+    3) {{'Education (highest degree of level of school you completed;' | translate }}<br>{{'If you enrolled, indicate highest degree received)' | translate }}:
+  </div>
+  <div class="form-group">
+    <select formControlName="education" class="form-control">
+      <option disabled>{{'Select education'| translate }}</option>
+      <option>{{'Choose education'| translate }}</option>
+      <option *ngFor="let educ of educationList">{{ educ }}</option>
+    </select>
+    <div
+      *ngIf="f.education.touched && f.education.invalid"
+      class="alert alert-danger"
+    >
+      <div *ngIf="f.education.errors.required">{{'Education is required'| translate }}.</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="employee">4) {{'Employer type'| translate }}:</label>
+    <select formControlName="employee" class="form-control">
+      <option disabled>{{'Select employer type'| translate }}</option>
+      <option>{{'Choose employer type'| translate }}</option>
+      <option *ngFor="let empl of employeeList">{{ empl }}</option>
+    </select>
+    <div
+      *ngIf="f.employee.touched && f.employee.invalid"
+      class="alert alert-danger"
+    >
+      <div *ngIf="f.employee.errors.required">{{'Employer type is required'| translate }}.</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="gross">5) {{'Gross individual income'| translate }}:</label>
+    <select formControlName="gross" class="form-control">
+      <option disabled>{{'Select gross income amount'| translate }}</option>
+      <option>{{'Choose gross income amount'| translate }}</option>
+      <option *ngFor="let grss of grossList">{{ grss }}</option>
+    </select>
+    <div *ngIf="f.gross.touched && f.gross.invalid" class="alert alert-danger">
+      <div *ngIf="f.gross.errors.required">{{'Gross income is required'| translate }}.</div>
+    </div>
+  </div>
+
+  <button class="btn btn-primary" type="submit" [disabled]="!userForm.valid">
+    {{'Submit'| translate }}
+  </button>
+  <button class="btn btn-primary" type="reset" [disabled]="!userForm.valid">
+    {{'Reset'| translate }}
+  </button>
+</form>
