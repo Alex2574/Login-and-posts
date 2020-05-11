@@ -61,11 +61,7 @@ export class QuestionnaireComponent implements OnInit {
   registerForm: FormGroup;
   constructor(private formBuilder: FormBuilder) {}
 
-  ngOnInit() {
-    this.registerForm = this.formBuilder.group({
-      BirthDate: '',
-    });
-  }
+  ngOnInit() {}
 
   onFormSubmit() {
     this.isValidFormSubmitted = false;
@@ -73,8 +69,6 @@ export class QuestionnaireComponent implements OnInit {
       return;
     }
     this.isValidFormSubmitted = true;
-    console.log(this.userForm.valid);
-    // this.user.ageGroup = this.userForm.get('ageGroup').value;
     alert('Info saved (just message)');
     this.reset();
   }
