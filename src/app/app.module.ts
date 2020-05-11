@@ -20,6 +20,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { ContactComponent } from './comments/comments';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { QuestionnaireComponent } from './questionnaire/questionnaire.component';
 
 
 registerLocaleData(ruLocale, 'ru');
@@ -37,7 +38,8 @@ const INTERCEPTOR_PROVIDER: Provider = {
     HomePageComponent,
     PostPageComponent,
     PostComponent,
-    ContactComponent
+    ContactComponent,
+    QuestionnaireComponent
   ],
   imports: [
     BrowserModule,
