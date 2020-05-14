@@ -3,20 +3,33 @@
     {{ 'Home' | translate }}
   </h1>
 
-  <ul >
-   <li *ngIf="auth.isAuthenticated()" class="wrapper"> <a (click)="logout($event)" 
-    ><b>{{ 'Exit' | translate }}</b>
-  </a></li>
-<li class = "wrapper">
-    <select #langSelect (change)="changeLang(langSelect.value)">
-      <option
-        *ngFor="let lang of translate.getLangs()"
-        [value]="lang"
-        [selected]="lang === translate.currentLang"
-        >{{ lang }}</option>
-    </select>
-  </li>
-    </ul>
+  <ul>
+    <li class="wrapper">
+      <b>
+        <app-login-dialog
+          [showLink]="!auth.isAuthenticated()"
+          [buttonText]="'Login'"
+          [showButton]="false"
+        >
+        </app-login-dialog
+      ></b>
+    </li>
+    <li *ngIf="auth.isAuthenticated()" class="wrapper">
+      <a (click)="logout($event)"
+        ><b>{{ 'Exit' | translate }}</b>
+      </a>
+    </li>
+    <li class="wrapper">
+      <select #langSelect (change)="changeLang(langSelect.value)">
+        <option
+          *ngFor="let lang of translate.getLangs()"
+          [value]="lang"
+          [selected]="lang === translate.currentLang"
+          >{{ lang }}</option
+        >
+      </select>
+    </li>
+  </ul>
 </nav>
 <div class="container">
   <router-outlet></router-outlet>
