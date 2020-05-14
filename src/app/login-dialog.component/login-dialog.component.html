@@ -87,14 +87,12 @@
   </div>
 </ng-template>
 
-<div>
-  <div *ngIf="!showLink">
-    <button class="btn-login" (click)="open(modalRef)" *ngIf="showButton">
-      {{ buttonText }}
-    </button>
-  </div>
-
-  <a (click)="open(modalRef)" *ngIf="showLink">
+<div *ngIf="!showLink">
+  <button *ngIf="showButton" class="btn-login" (click)="open(modalRef)">
     {{ buttonText }}
-  </a>
+  </button>
 </div>
+
+<a *ngIf="showLink" (click)="open(modalRef)">
+  {{ buttonText }}
+</a>

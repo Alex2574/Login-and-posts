@@ -13,10 +13,10 @@
         </button>
       </li>
       <li>
-        <button
+        <button *ngIf="post && auth.isAuthenticated()"
           routerLink="/questionnaire"
           class="wrapper"
-          *ngIf="post && auth.isAuthenticated()"
+          
         >
           <b> {{ 'Provide info' | translate }}</b>
         </button>
