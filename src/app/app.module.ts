@@ -17,10 +17,11 @@ import { environment } from '../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ContactComponent } from './comments/comments';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { QuestionnaireComponent } from './questionnaire/questionnaire.component';
+import { LoginDialogComponent } from './login-dialog.component/login-dialog.component';
 
 
 registerLocaleData(ruLocale, 'ru');
@@ -39,7 +40,8 @@ const INTERCEPTOR_PROVIDER: Provider = {
     PostPageComponent,
     PostComponent,
     ContactComponent,
-    QuestionnaireComponent
+    QuestionnaireComponent,
+    LoginDialogComponent,
   ],
   imports: [
     BrowserModule,
