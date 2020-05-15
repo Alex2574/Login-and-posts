@@ -15,8 +15,9 @@
     <input type="radio" value="female" formControlName="gender" /> {{'Female' | translate }}
   </div>
   <div class="form-date">
-    <label>{{'Date of birth' | translate }}</label>
+    
     <div class="input-group">
+      <label>{{'Date of birth' | translate }}   </label>
       <input
         type="date"
         class="form-control"
@@ -98,7 +99,7 @@
   <button class="btn btn-primary" type="submit" [disabled]="!userForm.valid">
     {{'Submit'| translate }}
   </button>
-  <button class="btn btn-primary" type="reset" [disabled]="!userForm.valid">
+  <button class="btn btn-primary" type="reset" >
     {{'Reset'| translate }}
   </button>
 </form>
