@@ -298,7 +298,13 @@ table th {
     font-weight: bold;
     cursor: default;
   }
-
+  .home-style {
+    display: flex;
+    justify-content: space-between;
+    font-size: 28px;
+    padding: 0.5rem;
+    margin-top: -35px;
+  }
   a {
     color: #fff;
     margin-bottom: 20px;
