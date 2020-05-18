@@ -5,14 +5,12 @@
   float: left;
   margin: 5px;
 }
-
-.fontStyle {
+.font-style {
   font-size: 1.1rem;
   padding: 0.1rem 0.2rem;
   text-align: right;
   font-weight: bold;
 }
-
 .post {
   padding: 1rem;
   border: #ccc 1px dotted;
@@ -29,12 +27,8 @@
     border-radius: 30px;
     background-color: rgb(253, 253, 207);
     padding: 10px;
-
-
   }
-
   &-content {
     margin-bottom: .5rem;
-
   }
 }
