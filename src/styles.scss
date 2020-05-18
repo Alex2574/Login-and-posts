@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 @import "~quill/dist/quill.core.css";
 @import "~quill/dist/quill.snow.css";
-@import "~bootstrap/dist/css/bootstrap.css"; 
+@import "~bootstrap/dist/css/bootstrap.css";
 
 :root {
   --primary-color: #007bff;
@@ -9,7 +9,7 @@
   --light-color: #f4f4f4;
   --danger-color: #dc3545;
   --success-color: #28a745;
-  --invalid-color:#dc3545;
+  --invalid-color: #dc3545;
 }
 
 * {
@@ -75,6 +75,7 @@ img {
   max-width: 600px;
   margin: 0 auto;
 }
+
 .card {
   padding: 1rem;
   border: #ccc 1px dotted;
@@ -225,13 +226,14 @@ img {
 
   &.invalid {
     color: var(--invalid-color);
+
     input {
       border-color: var(--invalid-color);
     }
   }
 
   .validation {
-    color:  var(--invalid-color);
+    color: var(--invalid-color);
   }
 }
 
@@ -246,6 +248,7 @@ textarea {
   padding: 0.4rem;
   font-size: 1.2rem;
   border: 1px solid #ccc;
+  margin: 1px;
 }
 
 input[type='submit'],
@@ -272,11 +275,14 @@ table th {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.7rem 2rem;
+  border-radius: 30px;
+  height: 60px;
   z-index: 1;
   width: 100%;
   opacity: 0.9;
-  margin-bottom: 1rem;
+
+
+
 
   &.main {
     justify-content: center;
@@ -295,14 +301,20 @@ table th {
 
   a {
     color: #fff;
-    padding: 0.45rem;
-    margin: 0 0.25rem;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    height: 0.5rem;
+    width: 5rem;
+    font-size: 1rem;
+    padding: 0.5rem;
 
     &:hover {
       color: var(--light-color);
     }
   }
 }
+
 .star {
   color: red;
   font-weight: bold;
