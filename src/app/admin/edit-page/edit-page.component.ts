@@ -12,7 +12,6 @@ import { NgxSpinnerService } from 'ngx-spinner';
   templateUrl: './edit-page.component.html',
   styleUrls: ['./edit-page.component.scss'],
 })
-
 export class EditPageComponent implements OnInit, OnDestroy {
   form: FormGroup;
   post: Post;
@@ -41,9 +40,9 @@ export class EditPageComponent implements OnInit, OnDestroy {
           text: new FormControl(post.text, Validators.required),
         });
         setTimeout(() => {
-        this.SpinnerService.hide();
-      }, 500);
-       });
+          this.SpinnerService.hide();
+        }, 500);
+      });
   }
 
   ngOnDestroy() {
