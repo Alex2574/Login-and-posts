@@ -1,10 +1,12 @@
 <nav class="navbar bg-primary">
-  <h1><a routerLink="/" >
-    {{ 'Home' | translate }}
-  </a> </h1>
+  <b
+    ><a routerLink="/" class="home-style">
+      {{ 'Home' | translate }}
+    </a>
+  </b>
 
   <ul>
-    <li class="wrapper">
+    <li>
       <b>
         <app-login-dialog
           [showLink]="!auth.isAuthenticated()"
@@ -14,12 +16,12 @@
         </app-login-dialog
       ></b>
     </li>
-    <li *ngIf="auth.isAuthenticated()" class="wrapper">
+    <li *ngIf="auth.isAuthenticated()">
       <a (click)="logout($event)"
         ><b>{{ 'Exit' | translate }}</b>
       </a>
     </li>
-    <li class="wrapper">
+    <li>
       <select #langSelect (change)="changeLang(langSelect.value)">
         <option
           *ngFor="let lang of translate.getLangs()"
