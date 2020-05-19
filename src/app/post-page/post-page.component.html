@@ -66,5 +66,5 @@
 
 <app-comments
   (messageToEmit)="getMessage($event)"
-  *ngIf="auth.isAuthenticated()"
+  *ngIf="post && auth.isAuthenticated()"
 ></app-comments>
