@@ -14,6 +14,7 @@ import {SearchPipe} from './shared/search.pipe';
 import { AlertComponent } from './shared/components/alert/alert.component';
 import {AlertService} from './shared/services/alert.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgxSpinnerModule } from 'ngx-spinner'; 
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ReactiveFormsModule,
      NgbModule,
     SharedModule,
+    NgxSpinnerModule,
     RouterModule.forChild([
       {
         path: '', component: AdminLayoutComponent, children: [
