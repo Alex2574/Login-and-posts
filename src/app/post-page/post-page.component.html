@@ -13,10 +13,10 @@
         </button>
       </li>
       <li>
-        <button *ngIf="post && auth.isAuthenticated()"
+        <button
+          *ngIf="post && auth.isAuthenticated()"
           routerLink="/questionnaire"
           class="wrapper"
-          
         >
           <b> {{ 'Provide info' | translate }}</b>
         </button>
@@ -31,7 +31,7 @@
   </div>
 
   <div>
-    <quill-view-html [content]="post.text"></quill-view-html>
+    <quill-view-html [content]="post.text"> </quill-view-html>
   </div>
 </div>
 
