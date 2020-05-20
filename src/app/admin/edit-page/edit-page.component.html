@@ -1,11 +1,13 @@
-<div *ngIf="form; else loading">
+<div *ngIf="form">
   <form [formGroup]="form" (ngSubmit)="submit()">
     <div
       class="custom-form-control"
-      [ngClass]="{invalid: form.get('title').touched && form.get('title').invalid}"
+      [ngClass]="{
+        invalid: form.get('title').touched && form.get('title').invalid
+      }"
     >
-      <label for="title">{{'Post name' | translate}}</label>
-      <input id="title" type="text" formControlName="title">
+      <label for="title">{{ 'Post name' | translate }}</label>
+      <input id="title" type="text" formControlName="title" />
       <div
         *ngIf="form.get('title').touched && form.get('title').invalid"
         class="validation"
@@ -24,10 +26,14 @@
       class="btn btn-primary"
       type="submit"
       [disabled]="form.invalid || submitted"
-    >{{'Update' | translate}}</button>
+    >
+      {{ 'Update' | translate }}
+    </button>
   </form>
 </div>
 
-<ng-template #loading>
-  <p class="text-center">Идет загрузка...</p>
-</ng-template>
+<ngx-spinner
+  bdColor="rgba(51, 51, 51, 0.8)"
+  size="default"
+  type="ball-spin-clockwise">
+  </ngx-spinner>
