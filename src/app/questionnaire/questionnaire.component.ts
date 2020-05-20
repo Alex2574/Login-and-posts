@@ -48,7 +48,7 @@ export class QuestionnaireComponent implements OnInit {
   ];
   userForm = new FormGroup({
     gender: new FormControl(),
-    BirthDate: new FormControl(),
+    BirthDate: new FormControl('', Validators.required),
     ageGroup: new FormControl('', Validators.required),
     education: new FormControl('', Validators.required),
     employee: new FormControl('', Validators.required),

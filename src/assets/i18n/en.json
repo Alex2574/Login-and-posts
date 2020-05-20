@@ -55,7 +55,8 @@
 "Choose gross income amount": "Choose gross income amount",
 "Gross income is required.": "Gross income is required.",
 "Submit": "Submit",
-"Reset": "Reset"
+"Reset": "Reset",
+"Wrong date, date must be YYYY-MM-DD format .": "Wrong date, date must be YYYY-MM-DD format ."
 
 
 }
