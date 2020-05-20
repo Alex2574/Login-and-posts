@@ -19,14 +19,14 @@ export class EditPageComponent implements OnInit, OnDestroy {
   uSub: Subscription;
 
   constructor(
-    private SpinnerService: NgxSpinnerService,
+    private spinnerService: NgxSpinnerService,
     private route: ActivatedRoute,
     private postsService: PostsService,
     private alert: AlertService
   ) {}
 
   ngOnInit() {
-    this.SpinnerService.show();
+    this.spinnerService.show();
     this.route.params
       .pipe(
         switchMap((params: Params) => {
@@ -40,7 +40,7 @@ export class EditPageComponent implements OnInit, OnDestroy {
           text: new FormControl(post.text, Validators.required),
         });
         setTimeout(() => {
-          this.SpinnerService.hide();
+          this.spinnerService.hide();
         }, 500);
       });
   }
