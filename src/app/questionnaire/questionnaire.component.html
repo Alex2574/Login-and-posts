@@ -19,17 +19,24 @@
       <input type="radio" value="female" formControlName="gender" />
       {{ 'Female' | translate }}
     </div>
+
     <div class="form-date">
       <div class="input-group">
-        <label>{{ 'Date of birth' | translate }} </label>
+        <label>{{ 'Date of birth' | translate }} </label><span class="star">*</span>
         <input
           type="date"
           class="form-control"
           id="BirthDate"
           name="BirthDate"
-          [ngModel]="BirthDate | date: 'mm-dd-yyyy'"
+          [ngModel]="BirthDate | date: 'YYYY-MM-DD'"
           formControlName="BirthDate"
         />
+      </div>
+      <div class="error"
+        *ngIf="userForm.get('BirthDate').touched && userForm.get('BirthDate').invalid">
+        <small *ngIf="userForm.get('BirthDate').errors.required">
+          {{ 'Wrong date, date must be YYYY-MM-DD format .' | translate }}
+        </small>
       </div>
     </div>
     <br />
