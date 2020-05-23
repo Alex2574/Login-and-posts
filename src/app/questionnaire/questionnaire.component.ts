@@ -1,12 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-import { FormsModule, ReactiveFormsModule, FormBuilder } from '@angular/forms';
+import { Component, OnInit, Input } from '@angular/core';
+import {
+  FormsModule,
+  ReactiveFormsModule,
+  FormBuilder,
+  ValidatorFn,
+  AbstractControl,
+  ValidationErrors,
+} from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { MomentModule } from 'ngx-moment';
+import * as moment from 'moment';
 
 @NgModule({
   declarations: [QuestionnaireComponent],
-  imports: [BrowserModule, FormsModule, ReactiveFormsModule],
+  imports: [BrowserModule, FormsModule, ReactiveFormsModule, MomentModule],
   providers: [],
   bootstrap: [QuestionnaireComponent],
 })
@@ -48,7 +57,11 @@ export class QuestionnaireComponent implements OnInit {
   ];
   userForm = new FormGroup({
     gender: new FormControl(),
-    BirthDate: new FormControl('', Validators.required),
+    birthDate: new FormControl('', [
+      Validators.required,
+      CustomValidators.dateMinimum('2000-01-01'),
+      CustomValidators.dateMaximum('2021-01-01'),
+    ]),
     ageGroup: new FormControl('', Validators.required),
     education: new FormControl('', Validators.required),
     employee: new FormControl('', Validators.required),
@@ -57,8 +70,9 @@ export class QuestionnaireComponent implements OnInit {
   isValidFormSubmitted: boolean;
   user: any;
   select: any;
-  BirthDate: Date;
+  birthDate: Date;
   registerForm: FormGroup;
+
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit() {}
@@ -77,7 +91,7 @@ export class QuestionnaireComponent implements OnInit {
     this.userForm.reset({
       ageGroup: false,
       gender: false,
-      BirthDate: false,
+      birthDate: false,
       education: false,
       employee: false,
       gross: false,
@@ -90,5 +104,55 @@ export class QuestionnaireComponent implements OnInit {
 
   submit() {
     console.log(this.userForm.value);
+  }
+}
+export class CustomValidators {
+  static dateMinimum(date: string): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      if (control.value == null) {
+        return null;
+      }
+      const FORMAT_DATE = 'YYYY-MM-DD';
+      const controlDate = moment(control.value, FORMAT_DATE);
+
+      if (!controlDate.isValid()) {
+        return null;
+      }
+
+      const validationDate = moment(date);
+
+      return controlDate.isAfter(validationDate)
+        ? null
+        : {
+            'date-minimum': {
+              'date-minimum': validationDate.format(FORMAT_DATE),
+              actual: controlDate.format(FORMAT_DATE),
+            },
+          };
+    };
+  }
+  static dateMaximum(date: string): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      if (control.value == null) {
+        return null;
+      }
+      const FORMAT_DATE = 'YYYY-MM-DD';
+      const controlDate = moment(control.value, FORMAT_DATE);
+
+      if (!controlDate.isValid()) {
+        return null;
+      }
+
+      const validationDate = moment(date);
+
+      return controlDate.isBefore(validationDate)
+        ? null
+        : {
+            'date-maximum': {
+              'date-maximum': validationDate.format(FORMAT_DATE),
+              actual: controlDate.format(FORMAT_DATE),
+            },
+          };
+    };
   }
 }
