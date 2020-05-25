@@ -19,17 +19,39 @@
       <input type="radio" value="female" formControlName="gender" />
       {{ 'Female' | translate }}
     </div>
+
     <div class="form-date">
       <div class="input-group">
-        <label>{{ 'Date of birth' | translate }} </label>
+        <label>{{ 'Date of birth' | translate }} </label
+        ><span class="star">*</span>
+
         <input
-          type="date"
+          type="text"
+          placeholder="DD-MM-YYYY"
+          min="2000-01-01"
+          max="2025-01-01"
+          date="YYYY-MM-DD"
+          onfocus="type='date'"
           class="form-control"
-          id="BirthDate"
-          name="BirthDate"
-          [ngModel]="BirthDate | date: 'mm-dd-yyyy'"
-          formControlName="BirthDate"
+          name="birthDate"
+          [ngModel]="birthDate"
+          formControlName="birthDate"
+          required
         />
+      </div>
+      <div
+        class="error"
+        *ngIf="
+          userForm.get('birthDate').touched && userForm.get('birthDate').invalid
+        "
+      >
+        <small *ngIf="userForm.get('birthDate').errors.required">
+          {{ 'Wrong date, date must be DD-MM-YYYY format .' | translate }}
+        </small>
+
+        <small *ngIf="userForm.get('birthDate').invalid">
+          Wrong date, must be between 01-01-2000 and 01-01-2021.
+        </small>
       </div>
     </div>
     <br />

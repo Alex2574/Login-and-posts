@@ -1,15 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormsModule, ReactiveFormsModule, FormBuilder } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { CustomValidators } from '../custom-validators';
 
-@NgModule({
-  declarations: [QuestionnaireComponent],
-  imports: [BrowserModule, FormsModule, ReactiveFormsModule],
-  providers: [],
-  bootstrap: [QuestionnaireComponent],
-})
 @Component({
   selector: 'app-questionnaire',
   templateUrl: './questionnaire.component.html',
@@ -48,7 +41,11 @@ export class QuestionnaireComponent implements OnInit {
   ];
   userForm = new FormGroup({
     gender: new FormControl(),
-    BirthDate: new FormControl(),
+    birthDate: new FormControl('', [
+      Validators.required,
+      CustomValidators.dateMinimum('2000-01-01'),
+      CustomValidators.dateMaximum('2021-01-01'),
+    ]),
     ageGroup: new FormControl('', Validators.required),
     education: new FormControl('', Validators.required),
     employee: new FormControl('', Validators.required),
@@ -57,8 +54,9 @@ export class QuestionnaireComponent implements OnInit {
   isValidFormSubmitted: boolean;
   user: any;
   select: any;
-  BirthDate: Date;
+  birthDate: Date;
   registerForm: FormGroup;
+
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit() {}
@@ -77,7 +75,7 @@ export class QuestionnaireComponent implements OnInit {
     this.userForm.reset({
       ageGroup: false,
       gender: false,
-      BirthDate: false,
+      birthDate: false,
       education: false,
       employee: false,
       gross: false,

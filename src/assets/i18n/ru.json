@@ -55,5 +55,6 @@
 "Choose gross income amount": "Выберите сумму валового дохода",
 "Gross income is required.": "Требуется валовой доход.",
 "Submit": "Отправить",
-"Reset": "Сброс"
+"Reset": "Сброс",
+"Wrong date, date must be YYYY-MM-DD format .": "Неверная дата, дата должна быть в формате YYYY-MM-DD."
 }
