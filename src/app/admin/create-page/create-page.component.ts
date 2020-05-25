@@ -7,7 +7,7 @@ import { AlertService } from '../shared/services/alert.service';
 @Component({
   selector: 'app-create-page',
   templateUrl: './create-page.component.html',
-  styleUrls: ['./create-page.component.scss']
+  styleUrls: ['./create-page.component.scss'],
 })
 export class CreatePageComponent implements OnInit {
   post: Post;
@@ -22,7 +22,7 @@ export class CreatePageComponent implements OnInit {
     this.form = new FormGroup({
       title: new FormControl(null, Validators.required),
       text: new FormControl(null, Validators.required),
-      author: new FormControl(null, Validators.required)
+      author: new FormControl(null, Validators.required),
     });
   }
 
@@ -36,7 +36,7 @@ export class CreatePageComponent implements OnInit {
       author: this.form.value.author,
       text: this.form.value.text,
       date: new Date(),
-      comments: this.form.value.comments
+      comments: this.form.value.comments,
     };
 
     this.postsService.create(post).subscribe(() => {

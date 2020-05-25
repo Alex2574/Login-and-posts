@@ -281,9 +281,6 @@ table th {
   width: 100%;
   opacity: 0.9;
 
-
-
-
   &.main {
     justify-content: center;
     border-bottom: 1px solid var(--dark-color);
@@ -298,6 +295,7 @@ table th {
     font-weight: bold;
     cursor: default;
   }
+
   .home-style {
     display: flex;
     justify-content: space-between;
@@ -305,6 +303,7 @@ table th {
     padding: 0.5rem;
     margin-top: -35px;
   }
+
   a {
     color: #fff;
     margin-bottom: 20px;
