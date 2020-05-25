@@ -30,6 +30,7 @@ const INTERCEPTOR_PROVIDER: Provider = {
 
 @NgModule({
   declarations: [
+    QuestionnaireComponent,
     AppComponent,
     MainLayoutComponent,
     HomePageComponent,
@@ -40,6 +41,9 @@ const INTERCEPTOR_PROVIDER: Provider = {
     LoginDialogComponent,
   ],
   imports: [
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     NgbModule,
     FormsModule,
     BrowserModule,

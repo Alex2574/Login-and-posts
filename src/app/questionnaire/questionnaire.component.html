@@ -24,42 +24,18 @@
       <div class="input-group">
         <label>{{ 'Date of birth' | translate }} </label
         ><span class="star">*</span>
-        <!-- 
-        <form class="form-inline">
-          <div class="form-group">
-            <div class="input-group">
-              <input
-                class="form-control"
-                placeholder="yyyy-mm-dd"
-                name="dp"
-                [(ngModel)]="model"
-                ngbDatepicker
-                #d="ngbDatepicker"
-              />
-              <div class="input-group-append">
-                <button
-                  class="btn btn-outline-secondary calendar"
-                  (click)="d.toggle()"
-                  type="button"
-                ></button>
-              </div>
-            </div>
-          </div>
-        </form> -->
 
         <input
           type="text"
-          placeholder="DD-MM-YYYY" 
+          placeholder="DD-MM-YYYY"
           min="2000-01-01"
           max="2025-01-01"
           date="YYYY-MM-DD"
-          onfocus="(this.type='date')" 
-          onblur="(this.type='text')"
+          onfocus="type='date'"
           class="form-control"
           name="birthDate"
           [ngModel]="birthDate"
           formControlName="birthDate"
-          
           required
         />
       </div>

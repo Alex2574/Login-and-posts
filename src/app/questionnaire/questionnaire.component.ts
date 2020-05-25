@@ -1,24 +1,13 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
-  FormsModule,
-  ReactiveFormsModule,
   FormBuilder,
   ValidatorFn,
   AbstractControl,
   ValidationErrors,
 } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { MomentModule } from 'ngx-moment';
 import * as moment from 'moment';
 
-@NgModule({
-  declarations: [QuestionnaireComponent],
-  imports: [BrowserModule, FormsModule, ReactiveFormsModule, MomentModule],
-  providers: [],
-  bootstrap: [QuestionnaireComponent],
-})
 @Component({
   selector: 'app-questionnaire',
   templateUrl: './questionnaire.component.html',
