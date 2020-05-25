@@ -15,7 +15,6 @@ export class ContactComponent implements OnInit {
 
   @Output() messageToEmit = new EventEmitter<any>();
   @Input() auth = '';
- 
 
   constructor() {}
 
@@ -40,7 +39,6 @@ export class ContactComponent implements OnInit {
       date: new Date(),
     };
     this.messageToEmit.emit(data);
-
     const message: Messages = {
       message: this.form.value.message,
     };

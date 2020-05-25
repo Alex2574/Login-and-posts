@@ -55,9 +55,7 @@ export class EditPageComponent implements OnInit, OnDestroy {
     if (this.form.invalid) {
       return;
     }
-
     this.submitted = true;
-
     this.uSub = this.postsService
       .update({
         updateTime: new Date(),

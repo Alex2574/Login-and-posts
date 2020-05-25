@@ -1,14 +1,12 @@
-import {NgModule} from '@angular/core';
-import {HttpClientModule, HttpClient} from '@angular/common/http';
-import {QuillModule} from 'ngx-quill';
+import { NgModule } from '@angular/core';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { QuillModule } from 'ngx-quill';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { registerLocaleData } from '@angular/common';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 
 export const createTranslateLoader = (http: HttpClient) => {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 };
-
 
 @NgModule({
   imports: [
@@ -18,16 +16,10 @@ export const createTranslateLoader = (http: HttpClient) => {
       loader: {
         provide: TranslateLoader,
         useFactory: createTranslateLoader,
-        deps: [HttpClient]
-      }
-    })
+        deps: [HttpClient],
+      },
+    }),
   ],
-  exports: [
-    HttpClientModule,
-    QuillModule,
-    TranslateModule
-  ]
+  exports: [HttpClientModule, QuillModule, TranslateModule],
 })
-export class SharedModule {
-
-}
+export class SharedModule {}

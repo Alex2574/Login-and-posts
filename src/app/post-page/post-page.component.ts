@@ -1,20 +1,13 @@
 import { Component, OnInit, NgModule } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-
-import {
-  FormGroup,
-  Validators,
-  FormsModule,
-} from '@angular/forms';
+import { FormGroup, Validators, FormsModule } from '@angular/forms';
 import { PostsService } from '../shared/posts.service';
 import { Subscription } from 'rxjs';
 import { Post, CommentBlock } from '../shared/interfaces';
 import { AuthService } from 'src/app/admin/shared/services/auth.service';
 import { switchMap } from 'rxjs/operators';
 import { ReactiveFormsModule } from '@angular/forms';
-import {
-  NgbModalOptions,
-} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-post-page',
@@ -44,9 +37,7 @@ export class PostPageComponent implements OnInit {
 
   constructor(
     public auth: AuthService,
-
     private route: ActivatedRoute,
-
     private postsService: PostsService
   ) {
     this.modalOptions = {

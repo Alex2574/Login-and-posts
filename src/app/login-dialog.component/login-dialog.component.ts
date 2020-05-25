@@ -1,14 +1,11 @@
 import { Component, OnInit, NgModule, Input } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-
 import {
   FormControl,
   FormGroup,
   Validators,
   FormsModule,
 } from '@angular/forms';
-import { PostsService } from '../shared/posts.service';
-import { Post, CommentBlock } from '../shared/interfaces';
 import { User } from 'src/app/shared/interfaces';
 import { AuthService } from 'src/app/admin/shared/services/auth.service';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -68,19 +65,15 @@ export class LoginDialogComponent implements OnInit {
     if (this.form.invalid) {
       return;
     }
-
     this.submitted = true;
-
     const user: User = {
       email: this.form.value.email,
       password: this.form.value.password,
     };
-
     this.auth.login(user).subscribe(
       () => {
         this.modalService.dismissAll();
         this.form.reset();
-
         this.submitted = false;
       },
       () => {

@@ -6,7 +6,7 @@ import { Post } from '../shared/interfaces';
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
-  styleUrls: ['./home-page.component.scss']
+  styleUrls: ['./home-page.component.scss'],
 })
 export class HomePageComponent implements OnInit {
   posts$: Subscription;
@@ -18,8 +18,7 @@ export class HomePageComponent implements OnInit {
   ngOnInit() {
     this.posts$ = this.postsService
       .getAll()
-      //Repaired error - when posts not created,and returned null.Now show, what no post are created
-      .subscribe(posts => {
+      .subscribe((posts) => {
         if (posts === null) {
           this.noPostMessage = 'No post created';
         } else {
