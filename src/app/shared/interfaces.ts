@@ -18,6 +18,18 @@ export interface Post {
   updateTime?: Date;
   comments: CommentBlock[];
 }
+
+export interface Questionnaire {
+  id?: string;
+  date: Date;
+  gender?: string;
+  birthDate: Date;
+  ageGroup: number;
+  education: string;
+  employee: string;
+  gross: number;
+  email: string;
+}
 export interface Messages {
   message: string;
 }

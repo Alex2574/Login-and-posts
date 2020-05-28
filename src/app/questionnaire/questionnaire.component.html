@@ -34,7 +34,6 @@
           onfocus="type='date'"
           class="form-control"
           name="birthDate"
-          [ngModel]="birthDate"
           formControlName="birthDate"
           required
         />
@@ -142,7 +141,6 @@
         </div>
       </div>
     </div>
-
     <button class="btn btn-primary" type="submit" [disabled]="!userForm.valid">
       {{ 'Submit' | translate }}
     </button>
