@@ -10,9 +10,6 @@ export interface Alert {
 
 @Injectable({ providedIn: 'root' })
 export class AlertService {
-  setMessage(arg0: string, arg1: string) {
-    throw new Error('Method not implemented.');
-  }
   public alert$ = new Subject<Alert>();
 
   success(text: string) {
