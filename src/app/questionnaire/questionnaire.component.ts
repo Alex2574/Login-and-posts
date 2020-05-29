@@ -1,14 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CustomValidators } from '../custom-validators';
-
+import { Questionnaire, Post } from '../shared/interfaces';
+import { QuestService } from 'src/app/questionnaire/questservice';
+import { AlertService } from '../admin/shared/services/alert.service';
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-questionnaire',
   templateUrl: './questionnaire.component.html',
   styleUrls: ['./questionnaire.component.scss'],
 })
 export class QuestionnaireComponent implements OnInit {
+  @Input() post: Post;
   educationList: any = [
     'High school graduate,diploma or the equivalent (for example: GED)',
     'Bachelors degree',
@@ -53,22 +56,38 @@ export class QuestionnaireComponent implements OnInit {
   });
   isValidFormSubmitted: boolean;
   user: any;
-  select: any;
-  birthDate: Date;
   registerForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private questService: QuestService,
+    private alert: AlertService,
+    private location: Location
+  ) {}
 
   ngOnInit() {}
 
-  onFormSubmit() {
-    this.isValidFormSubmitted = false;
+  onFormSubmit(post, content) {
+    const questionnaire: Questionnaire = {
+      email: localStorage.getItem('email'),
+      date: this.userForm.value.date,
+      gender: this.userForm.value.gender,
+      birthDate: this.userForm.value.birthDate,
+      ageGroup: this.userForm.value.ageGroup,
+      education: this.userForm.value.education,
+      employee: this.userForm.value.employee,
+      gross: this.userForm.value.gross,
+    };
+
     if (this.userForm.invalid) {
       return;
     }
-    this.isValidFormSubmitted = true;
-    alert('Info saved (just message)');
-    this.reset();
+    this.questService.create(questionnaire).subscribe(() => {
+      this.userForm.reset();
+      this.alert.success('GOING TO PREVIOUS PAGE');
+      setTimeout(() => {
+        this.location.back();
+      }, 4000);
+    });
   }
 
   reset() {

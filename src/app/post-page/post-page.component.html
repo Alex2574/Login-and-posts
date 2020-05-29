@@ -15,7 +15,7 @@
       <li>
         <button
           *ngIf="post && auth.isAuthenticated()"
-          routerLink="/questionnaire"
+          (click)="getQuestionnaire()"
           class="wrapper"
         >
           <b> {{ 'Provide info' | translate }}</b>

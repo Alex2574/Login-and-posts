@@ -1,13 +1,15 @@
 import { Component, OnInit, NgModule } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormGroup, Validators, FormsModule } from '@angular/forms';
 import { PostsService } from '../shared/posts.service';
-import { Subscription } from 'rxjs';
-import { Post, CommentBlock } from '../shared/interfaces';
+import { Subscription, from } from 'rxjs';
+import { Post, CommentBlock, Questionnaire } from '../shared/interfaces';
 import { AuthService } from 'src/app/admin/shared/services/auth.service';
 import { switchMap } from 'rxjs/operators';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
+import { QuestService } from 'src/app/questionnaire/questservice';
+import { AlertService } from '../admin/shared/services/alert.service';
 
 @Component({
   selector: 'app-post-page',
@@ -34,11 +36,16 @@ export class PostPageComponent implements OnInit {
   private showCommentLess: boolean;
   amount = 5;
   less = 6;
+  questionnaire$: Subscription;
+  questionnaire: Questionnaire[] = [];
 
   constructor(
+    private router: Router,
     public auth: AuthService,
     private route: ActivatedRoute,
-    private postsService: PostsService
+    private postsService: PostsService,
+    private questService: QuestService,
+    private alert: AlertService
   ) {
     this.modalOptions = {
       backdrop: 'static',
@@ -72,6 +79,27 @@ export class PostPageComponent implements OnInit {
       });
     }
   }
+
+  getQuestionnaire(email: string) {
+    this.questionnaire$ = this.questService
+      .getAll()
+      .subscribe((questionnaires) => {
+        let questData = [];
+        if (questionnaires) {
+          questData = questionnaires;
+        }
+        const isEmailExists = questData.find(
+          (questionnaire) =>
+            questionnaire.email === localStorage.getItem('email')
+        );
+        if (isEmailExists) {
+          this.alert.danger('You filled questionnaire already');
+        } else {
+          this.router.navigate(['/questionnaire']);
+        }
+      });
+  }
+
   btnShowCommentCount() {
     if (this.commentsInfo.length > 5) {
       this.showCommentCount = !this.showCommentCount;
