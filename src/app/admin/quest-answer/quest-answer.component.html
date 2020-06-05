@@ -1,0 +1,27 @@
+<h1>Customers questionnaire answers</h1>
+<div *ngIf="questionnaires.length; else loading">
+    <input
+      type="text"
+      placeholder="{{ 'Find user by email' | translate }}"
+      [(ngModel)]="searchStr"
+    />
+  <ng-container
+    *ngFor="
+      let questionnaire of questionnaires | searchQuestionnaire: searchStr
+    "
+  >
+    <section class="quest">
+      <p><b>Registered user email:</b> {{ questionnaire.email }}</p>
+      <p><b>User gender: </b>{{ questionnaire.gender }}</p>
+      <p><b>User birth date: </b>{{ questionnaire.birthDate }}</p>
+      <p><b>User age group: </b>{{ questionnaire.ageGroup }}</p>
+      <p><b>User education: </b>{{ questionnaire.education }}</p>
+      <p><b>User employee type: </b>{{ questionnaire.employee }}</p>
+      <p><b>User gross: </b>{{ questionnaire.gross }}</p>
+      <p><b>Questionnaire id: </b>{{ questionnaire.id }}</p>
+    </section></ng-container>
+
+  <ng-template #loading>
+    <p class="text-center">{{ noPostMessage }}</p>
+  </ng-template>
+</div>

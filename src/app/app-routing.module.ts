@@ -4,6 +4,7 @@ import { MainLayoutComponent } from './shared/components/main-layout/main-layout
 import { HomePageComponent } from './home-page/home-page.component';
 import { PostPageComponent } from './post-page/post-page.component';
 import { QuestionnaireComponent } from './questionnaire/questionnaire.component';
+import { QuestAnswerComponent } from './admin/quest-answer/quest-answer.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,7 @@ const routes: Routes = [
       { path: '', component: HomePageComponent },
       { path: 'post/:id', component: PostPageComponent },
       { path: 'questionnaire', component: QuestionnaireComponent },
+      { path: 'admin/quest-answer', component: QuestAnswerComponent },
     ],
   },
   { path: 'admin', loadChildren: './admin/admin.module#AdminModule' },

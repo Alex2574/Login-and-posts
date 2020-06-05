@@ -9,8 +9,14 @@
       <li routerLinkActive="active">
         <a [routerLink]="['/admin', 'dashboard']">{{ 'Home' | translate }}</a>
       </li>
+
       <li routerLinkActive="active">
         <a [routerLink]="['/admin', 'create']">{{ 'Create' | translate }}</a>
+      </li>
+      <li routerLinkActive="active">
+        <a [routerLink]="['/admin', 'quest-answer']">{{
+          'Quest answers' | translate
+        }}</a>
       </li>
       <li>
         <a href="#" (click)="logout($event)">{{ 'Exit' | translate }}</a>

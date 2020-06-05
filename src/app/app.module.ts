@@ -19,6 +19,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { QuestionnaireComponent } from './questionnaire/questionnaire.component';
 import { LoginDialogComponent } from './login-dialog.component/login-dialog.component';
 import { DatePipe } from '@angular/common';
+import { QuestAnswerComponent } from './admin/quest-answer/quest-answer.component';
+import { SearchQuestPipe } from './admin/quest-answer/search-quest.pipe';
 
 registerLocaleData(ruLocale, 'ru');
 
@@ -39,7 +41,9 @@ const INTERCEPTOR_PROVIDER: Provider = {
     ContactComponent,
     QuestionnaireComponent,
     LoginDialogComponent,
-  ],
+    QuestAnswerComponent,
+    SearchQuestPipe,
+     ],
   imports: [
     BrowserModule,
     FormsModule,
