@@ -11,7 +11,7 @@ import { SearchQuestPipe } from 'src/app/admin/quest-answer/search-quest.pipe';
   styleUrls: ['./quest-answer.component.scss'],
 })
 export class QuestAnswerComponent implements OnInit {
-  questionnaires$: Subscription;
+  private questionnairesSub$: Subscription;
   questionnaires: Questionnaire[] = [];
   searchStr = '';
   noPostMessage = 'Loading questionnaire answers';
@@ -19,7 +19,7 @@ export class QuestAnswerComponent implements OnInit {
   constructor(private http: HttpClient, private questService: QuestService) {}
 
   ngOnInit() {
-    this.questionnaires$ = this.questService
+    this.questionnairesSub$ = this.questService
       .getAll()
       .subscribe((questionnaires) => {
         if (questionnaires === null) {
