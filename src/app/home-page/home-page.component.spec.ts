@@ -8,7 +8,7 @@ import { PostComponent } from '../shared/components/post/post.component';
 import { PostsService } from '../shared/posts.service';
 import { of } from 'rxjs';
 
-fdescribe('Homepage component', () => {
+describe('Homepage component', () => {
   let component: HomePageComponent;
   let fixture: ComponentFixture<HomePageComponent>;
   let postsService: PostsService;

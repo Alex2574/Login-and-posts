@@ -19,7 +19,6 @@ export class HomePageComponent implements OnInit {
     this.posts$ = this.postsService
       .getAll()
       .subscribe((posts) => {
-        console.log(posts)
         if (posts === null) {
           this.noPostMessage = 'No post created';
         } else {
