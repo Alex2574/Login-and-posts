@@ -3,7 +3,7 @@
     {{ post.title }}
   </div>
   <div class="font-style">
-    <button [routerLink]="['/post', post.id]" class="btn btn-open">
+    <button id="post-id{{post.id}}" [routerLink]="['/post', post.id]" class="btn btn-open">
       {{ 'Open' | translate }}
     </button>
     <b
