@@ -66,7 +66,7 @@ export class QuestionnaireComponent implements OnInit {
 
   ngOnInit() {}
 
-  onFormSubmit(post, content) {
+  onFormSubmit() {
     const questionnaire: Questionnaire = {
       email: localStorage.getItem('email'),
       date: this.userForm.value.date,

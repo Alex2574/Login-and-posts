@@ -1,5 +1,5 @@
 <h1>Customers questionnaire answers</h1>
-<div *ngIf="questionnaires.length; else loading">
+<div *ngIf="questionnaires.length">
     <input
       type="text"
       placeholder="{{ 'Find user by email' | translate }}"
@@ -20,8 +20,4 @@
       <p><b>User gross: </b>{{ questionnaire.gross }}</p>
       <p><b>Questionnaire id: </b>{{ questionnaire.id }}</p>
     </section></ng-container>
-
-  <ng-template #loading>
-    <p class="text-center">{{ noPostMessage }}</p>
-  </ng-template>
 </div>

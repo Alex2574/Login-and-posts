@@ -80,7 +80,7 @@ export class PostPageComponent implements OnInit {
     }
   }
 
-  getQuestionnaire(email: string) {
+  getQuestionnaire() {
     this.questionnaire$ = this.questService
       .getAll()
       .subscribe((questionnaires) => {

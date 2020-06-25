@@ -1,9 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Questionnaire } from 'src/app/shared/interfaces';
 import { HttpClient } from '@angular/common/http';
 import { QuestService } from 'src/app/questionnaire/questservice';
-import { SearchQuestPipe } from 'src/app/admin/quest-answer/search-quest.pipe';
 
 @Component({
   selector: 'app-quest-answer',
